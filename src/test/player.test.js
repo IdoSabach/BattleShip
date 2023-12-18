@@ -1,6 +1,6 @@
-const GameBoard = require('../interFace/gameBoard');
-const Player = require('../interFace/player');
-const Ship = require('../interFace/ship');
+const GameBoard = require('../classes/gameBoard');
+const Player = require('../classes/player');
+const Ship = require('../classes/ship');
 
 
 jest.spyOn(Math, 'random').mockReturnValue(0.5);

@@ -1,4 +1,4 @@
-const Ship = require('../interFace/ship'); 
+const Ship = require('../classes/ship'); 
 
 describe('Ship', () => {
 

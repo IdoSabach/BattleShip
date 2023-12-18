@@ -1,5 +1,5 @@
-const GameBoard = require('../interFace/gameBoard');
-const Ship = require('../interFace/ship');
+const GameBoard = require('../classes/gameBoard');
+const Ship = require('../classes/ship');
 
 describe('GameBoard', () => {
   let gameBoard;
