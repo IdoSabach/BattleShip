@@ -5,7 +5,7 @@ describe('GameBoard', () => {
   let gameBoard;
 
   beforeEach(() => {
-    gameBoard = new GameBoard();
+    gameBoard = new GameBoard("ido");
   });
 
   it('should create a 10x10 grid', () => {

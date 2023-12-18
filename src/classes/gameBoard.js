@@ -1,12 +1,11 @@
-
-
 export default class GameBoard {
-  constructor() {
-    this.rows = 10
-    this.columns = 10
+  constructor(name) {
+    this.rows = 10;
+    this.columns = 10;
     this.grid = this.createBoard();
     this.attacks = [];
     this.ships = [];
+    this.name = name
   }
 
   createBoard() {
@@ -33,9 +32,15 @@ export default class GameBoard {
 
   receiveAttack(row, column) {
     const shipAtLocation = this.grid[row][column];
-    if (shipAtLocation!==null) {
-      shipAtLocation.hits(); 
+    const coordinatesAlreadyAttacked = this.attacks.some(attack => attack.row === row && attack.column === column);
+
+    if (coordinatesAlreadyAttacked) {
+      console.log(`Coordinates (${row}, ${column}) have already been attacked. Please choose another pair.`);
     } else {
+      if (shipAtLocation !== null) {
+        shipAtLocation.hits();
+        this.grid[row][column] = 'x'
+      }
       this.attacks.push({ row, column });
     }
   }
@@ -49,6 +54,14 @@ export default class GameBoard {
     return this.ships.every(ship => ship.isSunk());
   }
 
+  checkShipsStatus() {
+    this.ships.forEach(ship => {
+      if (ship.lengthOfShip === 0) {
+        ship.shipSunk = true;
+      }
+    });
+  }
+
   getRandomAttackCoordinates() {
     const randomRow = Math.floor(Math.random() * this.rows);
     const randomColumn = Math.floor(Math.random() * this.columns);
@@ -56,5 +69,6 @@ export default class GameBoard {
   }
 }
 
-module.exports = GameBoard
+module.exports = GameBoard;
+
 

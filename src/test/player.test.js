@@ -3,7 +3,7 @@ const Player = require('../classes/player');
 const Ship = require('../classes/ship');
 
 
-jest.spyOn(Math, 'random').mockReturnValue(0.5);
+// jest.spyOn(Math, 'random').mockReturnValue(0.5);
 
 describe('Player', () => {
   let player;
@@ -12,12 +12,12 @@ describe('Player', () => {
   let computerGameBoard;
 
   beforeEach(() => {
-    playerGameBoard = new GameBoard();
-    computerGameBoard = new GameBoard();
+    playerGameBoard = new GameBoard("player");
+    computerGameBoard = new GameBoard("computer");
 
     player = new Player('Player');
     computerPlayer = new Player('Computer');
-    computerPlayer.isComputer = true;
+    // computerPlayer.isComputer = true;
 
     playerGameBoard.placeShip(new Ship(3), 2, 3);
     playerGameBoard.placeShip(new Ship(4), 4, 5);
@@ -33,18 +33,50 @@ describe('Player', () => {
   });
 
   it('should switch turns and attack each other', () => {
-    // Player makes a random attack
-    player.makeRandomAttack(computerGameBoard);
-
-    // Computer makes a random attack
-    computerPlayer.makeRandomAttack(playerGameBoard);
-
-    // Player makes a manual attack
+    // console.log(playerGameBoard)
+    // console.log(computerGameBoard)
+    
     player.makeAttack(computerGameBoard, 2, 3);
-
-    // Computer makes a random attack
     computerPlayer.makeRandomAttack(playerGameBoard);
+    player.makeAttack(computerGameBoard, 2, 4);
+    computerPlayer.makeRandomAttack(playerGameBoard);
+    player.makeAttack(computerGameBoard, 4, 5);
+    computerPlayer.makeRandomAttack(playerGameBoard);
+    player.makeAttack(computerGameBoard, 4, 6);
+    computerPlayer.makeRandomAttack(playerGameBoard);
+    player.makeAttack(computerGameBoard, 4, 7);
+    computerPlayer.makeRandomAttack(playerGameBoard);
+    player.makeAttack(computerGameBoard, 2, 5);
+    computerPlayer.makeRandomAttack(playerGameBoard);
+    player.makeAttack(computerGameBoard, 4, 8);
+    computerPlayer.makeRandomAttack(playerGameBoard);
+    player.makeAttack(computerGameBoard, 4, 9);
+    computerPlayer.makeRandomAttack(playerGameBoard);
+    player.makeAttack(computerGameBoard, 5, 2);
+    computerPlayer.makeRandomAttack(playerGameBoard);
+    player.makeAttack(computerGameBoard, 5, 3);
+    computerPlayer.makeRandomAttack(playerGameBoard);
+    player.makeAttack(computerGameBoard, 5, 4);
+    computerPlayer.makeRandomAttack(playerGameBoard);
+    player.makeAttack(computerGameBoard, 5, 5);
+    computerPlayer.makeRandomAttack(playerGameBoard);
+    player.makeAttack(computerGameBoard, 5, 6);
+    computerPlayer.makeRandomAttack(playerGameBoard);
+    player.makeAttack(computerGameBoard, 5, 1);
+    
 
-    // Check the state of the game boards or other assertions as needed
+
+    playerGameBoard.checkShipsStatus()
+    computerGameBoard.checkShipsStatus()
+
+    if(playerGameBoard.areAllShipsSunk()){
+      console.log('sunk')
+    }
+    if(computerGameBoard.areAllShipsSunk()){
+      console.log('sunk')
+    }
+
+    console.log(playerGameBoard)
+    console.log(computerGameBoard)
   });
 });
