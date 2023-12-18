@@ -1,6 +1,6 @@
 import Ship from "./ship";
 
-class GameBoard {
+export default class GameBoard {
   constructor() {
     this.rows = 10
     this.columns = 10
@@ -33,7 +33,7 @@ class GameBoard {
 
   receiveAttack(row, column) {
     const shipAtLocation = this.grid[row][column];
-    if (shipAtLocation) {
+    if (shipAtLocation!==null) {
       shipAtLocation.hits(); 
     } else {
       this.attacks.push({ row, column });
@@ -47,6 +47,12 @@ class GameBoard {
 
   areAllShipsSunk() {
     return this.ships.every(ship => ship.isSunk());
+  }
+
+  getRandomAttackCoordinates() {
+    const randomRow = Math.floor(Math.random() * this.rows);
+    const randomColumn = Math.floor(Math.random() * this.columns);
+    return { row: randomRow, column: randomColumn };
   }
 }
 

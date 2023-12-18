@@ -34,7 +34,7 @@ describe('Ship', () => {
     ship1.hits(); 
     ship1.hits(); 
     ship1.isSunk()
-    expect(ship1._shipSunk).toEqual(true);
+    expect(ship1.shipSunk).toEqual(true);
   });
 
 });
