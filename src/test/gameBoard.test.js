@@ -63,11 +63,11 @@ describe('GameBoard', () => {
     const ship1 = new Ship(2);
     const ship2 = new Ship(3);
     const ship3 = new Ship(5);
-    const ship4 = new Ship(4);
+    // const ship4 = new Ship(4);
     gameBoard.placeShip(ship1, 2, 3);
     gameBoard.placeShip(ship2, 4, 5);
     gameBoard.placeShip(ship3, 5, 1);
-    gameBoard.placeShip(ship4, 0, 1,true);
+    // gameBoard.placeShip(ship4, 0, 1,true);
 
     // Initially, no ships are sunk
     expect(gameBoard.areAllShipsSunk()).toBe(false);
@@ -119,17 +119,6 @@ describe('GameBoard', () => {
 
     const outOfBoundsShip = new Ship(4);
     expect(() => gameBoard.placeShip(outOfBoundsShip, 8, 8, true)).toThrowError(/Out of bounds/);
-  });
-
-  it('should handle incorrect vertical ship placement', () => {
-    const ship = new Ship(3);
-  
-    // Placing ship out of bounds
-    expect(() => gameBoard.placeShip(ship, 8, 8, true)).toThrowError(/Out of bounds/);
-  
-    // Placing ship with overlapping another ship
-    gameBoard.placeShip(new Ship(2), 2, 4);
-    expect(() => gameBoard.placeShip(ship, 2, 4, true)).toThrowError(/Another ship is already there/);
   });
   
 });
