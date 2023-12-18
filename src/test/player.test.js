@@ -19,14 +19,14 @@ describe('Player', () => {
     playerGameBoard.placeShip(new Ship(3), 2, 3);
     playerGameBoard.placeShip(new Ship(4), 4, 5);
     playerGameBoard.placeShip(new Ship(5), 5, 1);
-    // playerGameBoard.placeShip(new Ship(3), 9, 6,true);
-    // playerGameBoard.placeShip(new Ship(2), 0, 7,true);
+    playerGameBoard.placeShip(new Ship(3), 1, 6,true);
+    playerGameBoard.placeShip(new Ship(2), 0, 7,true);
 
     computerGameBoard.placeShip(new Ship(3), 2, 3);
     computerGameBoard.placeShip(new Ship(4), 4, 5);
     computerGameBoard.placeShip(new Ship(5), 5, 1);
-    // computerGameBoard.placeShip(new Ship(3), 9, 6,true);
-    // computerGameBoard.placeShip(new Ship(2), 0, 7,true);
+    computerGameBoard.placeShip(new Ship(3), 1, 6,true);
+    computerGameBoard.placeShip(new Ship(2), 0, 7,true);
   });
 
   afterEach(() => {
@@ -68,15 +68,16 @@ describe('Player', () => {
     playerGameBoard.checkShipsStatus()
     computerGameBoard.checkShipsStatus()
 
+    console.log(playerGameBoard)
+    console.log(computerGameBoard)
+
   });
 
-  // In player.test.js
 
 it('should handle abnormal scenarios', () => {
-  // Test placing ship vertically out of bounds
   expect(() => playerGameBoard.placeShipInColumn(new Ship(2), 9, 8)).toThrowError(/Cannot place the ship at the given coordinates. Out of bounds./);
 
-  // Test placing ship horizontally out of bounds
+
   expect(() => playerGameBoard.placeShip(new Ship(3), 8, 8)).toThrowError(/Cannot place the ship at the given coordinates. Out of bounds./);
 
   // // Test placing ship vertically with overlap

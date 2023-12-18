@@ -31,10 +31,8 @@ describe('GameBoard', () => {
   it('should handle incorrect ship placement', () => {
     const ship = new Ship(3);
 
-    // Placing ship out of bounds
     expect(() => gameBoard.placeShip(ship, 8, 8)).toThrowError(/Out of bounds/);
 
-    // Placing ship with overlapping another ship
     gameBoard.placeShip(new Ship(2), 2, 4);
     expect(() => gameBoard.placeShip(ship, 2, 3)).toThrowError(/Another ship is already there/);
   });
@@ -43,15 +41,12 @@ describe('GameBoard', () => {
     const ship = new Ship(3);
     gameBoard.placeShip(ship, 2, 3);
 
-    // Receive an attack that hits a ship
     gameBoard.receiveAttack(2, 3);
     expect(ship.hits()).toEqual(1);
 
-    // Receive an attack that misses
     gameBoard.receiveAttack(4, 4);
     expect(gameBoard.attacks).toContainEqual({ row: 4, column: 4 });
-
-    // Check reporting attacks
+    
     const consoleSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
     gameBoard.reportAttacks();
     expect(consoleSpy).toHaveBeenCalledWith('Attacks:');
@@ -69,10 +64,10 @@ describe('GameBoard', () => {
     gameBoard.placeShip(ship3, 5, 1);
     // gameBoard.placeShip(ship4, 0, 1,true);
 
-    // Initially, no ships are sunk
+  
     expect(gameBoard.areAllShipsSunk()).toBe(false);
 
-    // Hit all cells of ship1
+
     ship1.hits();
     ship1.hits();
     ship3.hits();
@@ -80,7 +75,7 @@ describe('GameBoard', () => {
     ship3.hits();
     expect(gameBoard.areAllShipsSunk()).toBe(false);
 
-    // Hit all cells of ship2
+  
     ship2.hits();
     ship2.hits();
     ship2.hits();
@@ -93,11 +88,11 @@ describe('GameBoard', () => {
     const ship = new Ship(3);
     gameBoard.placeShip(ship, 2, 3);
 
-    // Receive an attack that hits a ship
+
     gameBoard.receiveAttack(2, 3);
     expect(ship.hits()).toEqual(1);
 
-    // Try to attack the same coordinates again
+
     const consoleSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
     gameBoard.receiveAttack(2, 3);
     expect(consoleSpy).toHaveBeenCalledWith(
