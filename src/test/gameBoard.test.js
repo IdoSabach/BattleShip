@@ -28,6 +28,17 @@ describe('GameBoard', () => {
     expect(() => gameBoard.placeShip(outOfBoundsShip, 8, 8)).toThrowError(/Out of bounds/);
   });
 
+  it('should handle incorrect ship placement', () => {
+    const ship = new Ship(3);
+
+    // Placing ship out of bounds
+    expect(() => gameBoard.placeShip(ship, 8, 8)).toThrowError(/Out of bounds/);
+
+    // Placing ship with overlapping another ship
+    gameBoard.placeShip(new Ship(2), 2, 4);
+    expect(() => gameBoard.placeShip(ship, 2, 3)).toThrowError(/Another ship is already there/);
+  });
+
   it('should receive an attack and update the board', () => {
     const ship = new Ship(3);
     gameBoard.placeShip(ship, 2, 3);
@@ -52,9 +63,11 @@ describe('GameBoard', () => {
     const ship1 = new Ship(2);
     const ship2 = new Ship(3);
     const ship3 = new Ship(5);
+    const ship4 = new Ship(4);
     gameBoard.placeShip(ship1, 2, 3);
     gameBoard.placeShip(ship2, 4, 5);
     gameBoard.placeShip(ship3, 5, 1);
+    gameBoard.placeShip(ship4, 0, 1,true);
 
     // Initially, no ships are sunk
     expect(gameBoard.areAllShipsSunk()).toBe(false);
@@ -75,4 +88,48 @@ describe('GameBoard', () => {
     ship3.hits();
     expect(gameBoard.areAllShipsSunk()).toBe(true);
   });
+
+  it('should handle attacks on already attacked coordinates', () => {
+    const ship = new Ship(3);
+    gameBoard.placeShip(ship, 2, 3);
+
+    // Receive an attack that hits a ship
+    gameBoard.receiveAttack(2, 3);
+    expect(ship.hits()).toEqual(1);
+
+    // Try to attack the same coordinates again
+    const consoleSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
+    gameBoard.receiveAttack(2, 3);
+    expect(consoleSpy).toHaveBeenCalledWith(
+      'Coordinates (2, 3) have already been attacked. Please choose another pair.'
+    );
+    consoleSpy.mockRestore();
+  });
+
+  it('should place a ship on the board with vertical placement', () => {
+    const ship = new Ship(3);
+    gameBoard.placeShip(ship, 2, 3, true);
+
+    expect(gameBoard.grid[2][3]).toBe(ship);
+    expect(gameBoard.grid[3][3]).toBe(ship);
+    expect(gameBoard.grid[4][3]).toBe(ship);
+
+    const overlappingShip = new Ship(2);
+    expect(() => gameBoard.placeShip(overlappingShip, 3, 3, true)).toThrowError(/Another ship is already there/);
+
+    const outOfBoundsShip = new Ship(4);
+    expect(() => gameBoard.placeShip(outOfBoundsShip, 8, 8, true)).toThrowError(/Out of bounds/);
+  });
+
+  it('should handle incorrect vertical ship placement', () => {
+    const ship = new Ship(3);
+  
+    // Placing ship out of bounds
+    expect(() => gameBoard.placeShip(ship, 8, 8, true)).toThrowError(/Out of bounds/);
+  
+    // Placing ship with overlapping another ship
+    gameBoard.placeShip(new Ship(2), 2, 4);
+    expect(() => gameBoard.placeShip(ship, 2, 4, true)).toThrowError(/Another ship is already there/);
+  });
+  
 });

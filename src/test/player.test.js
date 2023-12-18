@@ -3,8 +3,6 @@ const Player = require('../classes/player');
 const Ship = require('../classes/ship');
 
 
-// jest.spyOn(Math, 'random').mockReturnValue(0.5);
-
 describe('Player', () => {
   let player;
   let computerPlayer;
@@ -17,7 +15,6 @@ describe('Player', () => {
 
     player = new Player('Player');
     computerPlayer = new Player('Computer');
-    // computerPlayer.isComputer = true;
 
     playerGameBoard.placeShip(new Ship(3), 2, 3);
     playerGameBoard.placeShip(new Ship(4), 4, 5);
@@ -33,8 +30,6 @@ describe('Player', () => {
   });
 
   it('should switch turns and attack each other', () => {
-    // console.log(playerGameBoard)
-    // console.log(computerGameBoard)
     
     player.makeAttack(computerGameBoard, 2, 3);
     computerPlayer.makeRandomAttack(playerGameBoard);
@@ -69,14 +64,5 @@ describe('Player', () => {
     playerGameBoard.checkShipsStatus()
     computerGameBoard.checkShipsStatus()
 
-    if(playerGameBoard.areAllShipsSunk()){
-      console.log('sunk')
-    }
-    if(computerGameBoard.areAllShipsSunk()){
-      console.log('sunk')
-    }
-
-    console.log(playerGameBoard)
-    console.log(computerGameBoard)
   });
 });
