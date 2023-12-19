@@ -1,3 +1,7 @@
-import { createGrid } from "./dom/UI";
+import { createGrid,createGame} from "./UI";
 
-createGrid()
+document.addEventListener('DOMContentLoaded', function () {
+  // Your code here
+  createGrid();
+  createGame();
+});
