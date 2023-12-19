@@ -22,19 +22,19 @@ describe('GameBoard', () => {
     expect(gameBoard.grid[2][5]).toBe(ship);
 
     const overlappingShip = new Ship(2);
-    expect(() => gameBoard.placeShip(overlappingShip, 2, 4)).toThrowError(/Another ship is already there/);
+    expect(() => gameBoard.placeShip(overlappingShip, 2, 4)).toThrowError(/Cannot place the ship at the given coordinates. Another ship is already there./);
 
     const outOfBoundsShip = new Ship(4);
-    expect(() => gameBoard.placeShip(outOfBoundsShip, 8, 8)).toThrowError(/Out of bounds/);
+    expect(() => gameBoard.placeShip(outOfBoundsShip, 8, 8)).toThrowError(/Cannot place the ship at the given coordinates. Out of bounds./);
   });
 
   it('should handle incorrect ship placement', () => {
     const ship = new Ship(3);
 
-    expect(() => gameBoard.placeShip(ship, 8, 8)).toThrowError(/Out of bounds/);
+    expect(() => gameBoard.placeShip(ship, 8, 8)).toThrowError(/Cannot place the ship at the given coordinates. Out of bounds./);
 
     gameBoard.placeShip(new Ship(2), 2, 4);
-    expect(() => gameBoard.placeShip(ship, 2, 3)).toThrowError(/Another ship is already there/);
+    expect(() => gameBoard.placeShip(ship, 2, 3)).toThrowError(/Cannot place the ship at the given coordinates. Another ship is already there./);
   });
 
   it('should receive an attack and update the board', () => {
@@ -110,10 +110,10 @@ describe('GameBoard', () => {
     expect(gameBoard.grid[4][3]).toBe(ship);
 
     const overlappingShip = new Ship(2);
-    expect(() => gameBoard.placeShip(overlappingShip, 3, 3, true)).toThrowError(/Another ship is already there/);
+    expect(() => gameBoard.placeShip(overlappingShip, 3, 3, true)).toThrowError(/Cannot place the ship at the given coordinates. Another ship is already there./);
 
     const outOfBoundsShip = new Ship(4);
-    expect(() => gameBoard.placeShip(outOfBoundsShip, 8, 8, true)).toThrowError(/Out of bounds/);
+    expect(() => gameBoard.placeShip(outOfBoundsShip, 8, 8, true)).toThrowError(/Cannot place the ship at the given coordinates. Out of bounds./);
   });
   
 });

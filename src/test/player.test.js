@@ -13,6 +13,8 @@ describe('Player', () => {
     playerGameBoard = new GameBoard("player");
     computerGameBoard = new GameBoard("computer");
 
+    
+
     player = new Player('Player');
     computerPlayer = new Player('Computer');
 
@@ -22,11 +24,11 @@ describe('Player', () => {
     playerGameBoard.placeShip(new Ship(3), 1, 6,true);
     playerGameBoard.placeShip(new Ship(2), 0, 7,true);
 
-    computerGameBoard.placeShip(new Ship(3), 2, 3);
-    computerGameBoard.placeShip(new Ship(4), 4, 5);
-    computerGameBoard.placeShip(new Ship(5), 5, 1);
-    computerGameBoard.placeShip(new Ship(3), 1, 6,true);
-    computerGameBoard.placeShip(new Ship(2), 0, 7,true);
+    computerGameBoard.placeRandomShip(new Ship(3));
+    computerGameBoard.placeRandomShip(new Ship(4));
+    computerGameBoard.placeRandomShip(new Ship(5));
+    computerGameBoard.placeRandomShip(new Ship(3),true);
+    computerGameBoard.placeRandomShip(new Ship(2),true);
   });
 
   afterEach(() => {
@@ -72,21 +74,5 @@ describe('Player', () => {
     console.log(computerGameBoard)
 
   });
-
-
-it('should handle abnormal scenarios', () => {
-  expect(() => playerGameBoard.placeShipInColumn(new Ship(2), 9, 8)).toThrowError(/Cannot place the ship at the given coordinates. Out of bounds./);
-
-
-  expect(() => playerGameBoard.placeShip(new Ship(3), 8, 8)).toThrowError(/Cannot place the ship at the given coordinates. Out of bounds./);
-
-  // // Test placing ship vertically with overlap
-  // playerGameBoard.placeShipInColumn(new Ship(3), 2, 3);
-  // expect(() => playerGameBoard.placeShipInColumn(new Ship(2), 2, 3)).toThrowError(/Cannot place the ship at the given coordinates. Another ship is already there/);
-
-
-  // // Test placing ship horizontally with overlap
-  // expect(() => playerGameBoard.placeShip(new Ship(4), 4, 5)).toThrowError(/Cannot place the ship at the given coordinates. Another ship is already there/);
-});
 
 });

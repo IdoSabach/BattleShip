@@ -20,6 +20,32 @@ export default class GameBoard {
     }
   }
 
+  placeRandomShip(ship, isVertical = false) {
+    let placedSuccessfully = false;
+  
+    while (!placedSuccessfully) {
+      const randomRow = Math.floor(Math.random() * this.rows);
+      const randomColumn = Math.floor(Math.random() * this.columns);
+  
+      // console.log(`Trying to place random ship at (${randomRow}, ${randomColumn})`);
+  
+      try {
+        if (isVertical) {
+          this.placeShipInColumn(ship, randomRow, randomColumn);
+        } else {
+          this.placeShipInRow(ship, randomRow, randomColumn);
+        }
+        
+        placedSuccessfully = true;
+      } catch (error) {
+
+        console.error(`Error placing random ship: ${error.message}`);
+      }
+    }
+  }
+  
+  
+
   placeShipInRow(ship, row, column) {
     if (row + ship.lengthOfShip > this.rows || column + ship.lengthOfShip > this.columns) {
       throw new Error('Cannot place the ship at the given coordinates. Out of bounds.');
@@ -57,23 +83,30 @@ export default class GameBoard {
   }
 
   receiveAttack(row, column) {
-    const shipAtLocation = this.grid[row][column];
     const coordinatesAlreadyAttacked = this.attacks.some(
       (attack) => attack.row === row && attack.column === column
     );
-
+  
     if (coordinatesAlreadyAttacked) {
       console.log(
         `Coordinates (${row}, ${column}) have already been attacked. Please choose another pair.`
       );
     } else {
-      if (shipAtLocation !== null) {
+      const shipAtLocation = this.grid[row][column];
+  
+      if (shipAtLocation === null) {
+        console.log(`Missed at (${row}, ${column})`);
+        this.grid[row][column] = 'o'; 
+      } else {
+        console.log(`Hit at (${row}, ${column})`);
         shipAtLocation.hits();
-        this.grid[row][column] = 'x';
+        this.grid[row][column] = 'x'; 
       }
+  
       this.attacks.push({ row, column });
     }
   }
+  
 
   reportAttacks() {
     console.log('Attacks:');
@@ -97,6 +130,12 @@ export default class GameBoard {
     const randomColumn = Math.floor(Math.random() * this.columns);
     return { row: randomRow, column: randomColumn };
   }
+
+  // getRandomPlacesCoordinates() {
+  //   const randomRow = Math.floor(Math.random() * this.rows);
+  //   const randomColumn = Math.floor(Math.random() * this.columns);
+  //   return { row: randomRow, column: randomColumn };
+  // }
 }
 
 module.exports = GameBoard;
