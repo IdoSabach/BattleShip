@@ -7,6 +7,37 @@ const computerGameBoard = new GameBoard("computer");
 const player = new Player("Player");
 const computerPlayer = new Player("Computer");
 
+export function createGame() {
+  playerCreateShip(playerGameBoard);
+  computerCreateShip(computerGameBoard);
+  // gameFlow(player, playerGameBoard, computerPlayer, computerGameBoard);
+}
+
+// function gameFlow(player, playerBoard, computerPlayer, computerBoard) {
+//   console.log(player);
+//   console.log(playerBoard);
+//   console.log(computerPlayer);
+//   console.log(computerBoard);
+// }
+
+function playerCreateShip(playerGameBoard) {
+  playerGameBoard.placeShip(new Ship(3), 2, 3);
+  playerGameBoard.placeShip(new Ship(4), 4, 5);
+  playerGameBoard.placeShip(new Ship(5), 5, 1);
+  playerGameBoard.placeShip(new Ship(3), 1, 6, true);
+  playerGameBoard.placeShip(new Ship(2), 0, 7, true);
+  console.log(playerGameBoard);
+}
+
+function computerCreateShip(computerGameBoard) {
+  computerGameBoard.placeRandomShip(new Ship(3));
+  computerGameBoard.placeRandomShip(new Ship(4));
+  computerGameBoard.placeRandomShip(new Ship(5));
+  computerGameBoard.placeRandomShip(new Ship(3), true);
+  computerGameBoard.placeRandomShip(new Ship(2), true);
+  console.log(computerGameBoard);
+}
+
 export function createGrid() {
   const main = document.querySelector(".main");
 
@@ -25,6 +56,7 @@ export function createGrid() {
       boxPlayer.style["border-width"] = "1px";
 
       gridPlayer.appendChild(boxPlayer);
+      // handleClickComputer(boxPlayer)
     }
   }
 
@@ -49,6 +81,7 @@ export function createGrid() {
       boxComputer.addEventListener("click", function (e) {
         if (boxComputer.style.background === "none") {
           handleClick(e,boxComputer);
+          // handleClickComputer()
         }
       });
 
@@ -57,9 +90,28 @@ export function createGrid() {
   }
 }
 
+
+// function handleClickComputer(boxPlayer) {
+//   const randomRow = Math.floor(Math.random() * 10);
+//   const randomColumn = Math.floor(Math.random() * 10);
+//   if(playerGameBoard.grid[randomRow][randomColumn]!==null){
+//     boxPlayer.style.background = "green";
+//     computerPlayer.makeRandomAttack(playerGameBoard);
+//     playerGameBoard.checkShipsStatus()
+//     computerGameBoard.checkShipsStatus()
+//     if(computerGameBoard.areAllShipsSunk()){
+//       alert("wonnnnnnnnnn")
+//     }
+//   }else{
+//     boxPlayer.style.background = "red";
+//   }
+// }
+
+
 function handleClick(event,boxComputer) {
   const row = event.currentTarget.dataset.row;
   const column = event.currentTarget.dataset.column;
+
   if(computerGameBoard.grid[row][column]!==null){
     boxComputer.style.background = "green";
     player.makeAttack(computerGameBoard, row, column);
@@ -78,34 +130,5 @@ function handleClick(event,boxComputer) {
   };
 }
 
-export function createGame() {
-  playerCreateShip(playerGameBoard);
-  computerCreateShip(computerGameBoard);
-  gameFlow(player, playerGameBoard, computerPlayer, computerGameBoard);
-}
 
-function gameFlow(player, playerBoard, computerPlayer, computerBoard) {
-  console.log(player);
-  console.log(playerBoard);
-  console.log(computerPlayer);
-  console.log(computerBoard);
-}
-
-function playerCreateShip(playerGameBoard) {
-  playerGameBoard.placeShip(new Ship(3), 2, 3);
-  playerGameBoard.placeShip(new Ship(4), 4, 5);
-  playerGameBoard.placeShip(new Ship(5), 5, 1);
-  playerGameBoard.placeShip(new Ship(3), 1, 6, true);
-  playerGameBoard.placeShip(new Ship(2), 0, 7, true);
-  console.log(playerGameBoard);
-}
-
-function computerCreateShip(computerGameBoard) {
-  computerGameBoard.placeRandomShip(new Ship(3));
-  computerGameBoard.placeRandomShip(new Ship(4));
-  computerGameBoard.placeRandomShip(new Ship(5));
-  computerGameBoard.placeRandomShip(new Ship(3), true);
-  computerGameBoard.placeRandomShip(new Ship(2), true);
-  console.log(computerGameBoard);
-}
 
