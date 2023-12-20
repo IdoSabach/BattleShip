@@ -15,11 +15,19 @@ export function createGame() {
 }
 
 export function finishGame(){
+  const popup = document.querySelector('.popup')
+  const text = document.querySelector('.text')
   if(computerGameBoard.areAllShipsSunk()){
-    alert("you won")
+    popup.style.display = 'flex'
+    text.textContent = 'You Won!'
   }else if(playerGameBoard.areAllShipsSunk()){
-    alert("you lose")
+    popup.style.display = 'flex'
+    text.textContent = 'You Lose!'
   }
+  const btn = document.querySelector('.btn')
+  btn.addEventListener('click',function(){
+    location.reload();
+  })
 }
 
 
