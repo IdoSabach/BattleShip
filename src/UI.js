@@ -3,8 +3,6 @@ import Player from "./classes/player.js";
 import GameBoard from "./classes/gameBoard.js";
 import pubsub from "./pubsub.js";
 
-// pubsub.subscribe("giveBoardPlayer",)
-// pubsub.subscribe("data",handleClickComputer)
 
 const playerGameBoard = new GameBoard("player");
 const computerGameBoard = new GameBoard("computer");
@@ -14,6 +12,14 @@ const computerPlayer = new Player("Computer");
 export function createGame() {
   playerCreateShip(playerGameBoard);
   computerCreateShip(computerGameBoard);
+}
+
+export function finishGame(){
+  if(computerGameBoard.areAllShipsSunk()){
+    alert("you won")
+  }else if(playerGameBoard.areAllShipsSunk()){
+    alert("you lose")
+  }
 }
 
 
@@ -78,6 +84,10 @@ export function createGrid() {
       boxComputer.addEventListener("click", function (e) {
         if (boxComputer.style.background === "none") {
           handleClick(e,boxComputer);
+          computerPlayer.makeRandomAttack(playerGameBoard);
+          setTimeout(()=>{
+            finishGame()
+          },500)
         }
       });
 
@@ -95,9 +105,6 @@ function handleClick(event,boxComputer) {
     player.makeAttack(computerGameBoard, row, column);
     playerGameBoard.checkShipsStatus()
     computerGameBoard.checkShipsStatus()
-    if(computerGameBoard.areAllShipsSunk()){
-      alert("wonnnnnnnnnn")
-    }
   }else{
     boxComputer.style.background = "red";
   }

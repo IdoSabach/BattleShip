@@ -88,25 +88,22 @@ export default class GameBoard {
     );
   
     if (coordinatesAlreadyAttacked) {
-      // console.log(
-      //   `Coordinates (${row}, ${column}) have already been attacked. Please choose another pair.`
-      // );
+      console.log(`Coordinates (${row}, ${column}) have already been attacked. Please choose another pair.`);
       return false; // Already attacked
     } else {
       const shipAtLocation = this.grid[row][column];
   
       if (shipAtLocation === null) {
-        // console.log(`Missed at (${row}, ${column})`);
+        console.log(`Missed at (${row}, ${column})`);
         this.grid[row][column] = 'o';
-        this.attacks.push({ row, column });
-        return false; // Missed
       } else {
-        // console.log(`Hit at (${row}, ${column})`);
+        console.log(`Hit at (${row}, ${column})`);
         shipAtLocation.hits();
         this.grid[row][column] = 'x';
-        this.attacks.push({ row, column });
-        return true; // Hit
       }
+  
+      this.attacks.push({ row, column });
+      return true; // Hit or Missed
     }
   }
   
@@ -134,6 +131,13 @@ export default class GameBoard {
     const randomColumn = Math.floor(Math.random() * this.columns);
     return { row: randomRow, column: randomColumn };
   }
+
+  isCoordinateAttacked(row, column) {
+    return this.attacks.some(
+      (attack) => attack.row === row && attack.column === column
+    );
+  }
+  
 
   // getRandomPlacesCoordinates() {
   //   const randomRow = Math.floor(Math.random() * this.rows);

@@ -41,36 +41,50 @@ describe('Player', () => {
 
   it('should switch turns and attack each other', () => {
     
-    player.makeAttack(computerGameBoard, 2, 3);
-    computerPlayer.makeRandomAttack(playerGameBoard);
-    player.makeAttack(computerGameBoard, 2, 4);
-    computerPlayer.makeRandomAttack(playerGameBoard);
-    player.makeAttack(computerGameBoard, 4, 5);
-    computerPlayer.makeRandomAttack(playerGameBoard);
-    player.makeAttack(computerGameBoard, 4, 6);
-    computerPlayer.makeRandomAttack(playerGameBoard);
-    player.makeAttack(computerGameBoard, 4, 7);
-    computerPlayer.makeRandomAttack(playerGameBoard);
-    player.makeAttack(computerGameBoard, 2, 5);
-    computerPlayer.makeRandomAttack(playerGameBoard);
-    player.makeAttack(computerGameBoard, 4, 8);
-    computerPlayer.makeRandomAttack(playerGameBoard);
-    player.makeAttack(computerGameBoard, 4, 9);
-    computerPlayer.makeRandomAttack(playerGameBoard);
-    player.makeAttack(computerGameBoard, 5, 2);
-    computerPlayer.makeRandomAttack(playerGameBoard);
-    player.makeAttack(computerGameBoard, 5, 3);
-    computerPlayer.makeRandomAttack(playerGameBoard);
-    player.makeAttack(computerGameBoard, 5, 4);
-    computerPlayer.makeRandomAttack(playerGameBoard);
-    player.makeAttack(computerGameBoard, 5, 5);
-    computerPlayer.makeRandomAttack(playerGameBoard);
-    player.makeAttack(computerGameBoard, 5, 6);
-    computerPlayer.makeRandomAttack(playerGameBoard);
-    player.makeAttack(computerGameBoard, 5, 1);
+    // player.makeAttack(computerGameBoard, 2, 3);
+    // computerPlayer.makeRandomAttack(playerGameBoard);
+    // player.makeAttack(computerGameBoard, 2, 4);
+    // computerPlayer.makeRandomAttack(playerGameBoard);
+    // player.makeAttack(computerGameBoard, 4, 5);
+    // computerPlayer.makeRandomAttack(playerGameBoard);
+    // player.makeAttack(computerGameBoard, 4, 6);
+    // computerPlayer.makeRandomAttack(playerGameBoard);
+    // player.makeAttack(computerGameBoard, 4, 7);
+    // computerPlayer.makeRandomAttack(playerGameBoard);
+    // player.makeAttack(computerGameBoard, 2, 5);
+    // computerPlayer.makeRandomAttack(playerGameBoard);
+    // player.makeAttack(computerGameBoard, 4, 8);
+    // computerPlayer.makeRandomAttack(playerGameBoard);
+    // player.makeAttack(computerGameBoard, 4, 9);
+    // computerPlayer.makeRandomAttack(playerGameBoard);
+    // player.makeAttack(computerGameBoard, 5, 2);
+    // computerPlayer.makeRandomAttack(playerGameBoard);
+    // player.makeAttack(computerGameBoard, 5, 3);
+    // computerPlayer.makeRandomAttack(playerGameBoard);
+    // player.makeAttack(computerGameBoard, 5, 4);
+    // computerPlayer.makeRandomAttack(playerGameBoard);
+    // player.makeAttack(computerGameBoard, 5, 5);
+    // computerPlayer.makeRandomAttack(playerGameBoard);
+    // player.makeAttack(computerGameBoard, 5, 6);
+    // computerPlayer.makeRandomAttack(playerGameBoard);
+    // player.makeAttack(computerGameBoard, 5, 1);
+    // computerPlayer.makeRandomAttack(playerGameBoard);
     
 
 
+    while(!playerGameBoard.areAllShipsSunk() || !computerGameBoard.areAllShipsSunk()){
+      let crd = playerGameBoard.getRandomAttackCoordinates()
+      computerPlayer.makeRandomAttack(playerGameBoard);
+      player.makeAttack(computerGameBoard, crd.row, crd.column);
+    }
+
+    const str = "game over"
+    if(computerGameBoard.areAllShipsSunk()){
+      console.log(str) 
+    }
+    if(playerGameBoard.areAllShipsSunk()){
+      console.log(str)
+    }
     playerGameBoard.checkShipsStatus()
     computerGameBoard.checkShipsStatus()
 
