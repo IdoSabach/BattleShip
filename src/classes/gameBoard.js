@@ -53,7 +53,8 @@ export default class GameBoard {
 
     for (let i = 0; i < ship.lengthOfShip; i++) {
       if (this.grid[row][column + i] !== null) {
-        throw new Error('Cannot place the ship at the given coordinates. Another ship is already there.');
+        // throw new Error('Cannot place the ship at the given coordinates. Another ship is already there.');
+        return
       }
     }
 
@@ -71,7 +72,8 @@ export default class GameBoard {
 
     for (let i = 0; i < ship.lengthOfShip; i++) {
       if (this.grid[row + i][column] !== null) {
-        throw new Error('Cannot place the ship at the given coordinates. Another ship is already there.');
+        // throw new Error('Cannot place the ship at the given coordinates. Another ship is already there.');
+        return
       }
     }
 

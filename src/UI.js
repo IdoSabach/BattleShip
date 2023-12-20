@@ -1,6 +1,10 @@
 import Ship from "./classes/ship.js";
 import Player from "./classes/player.js";
 import GameBoard from "./classes/gameBoard.js";
+import pubsub from "./pubsub.js";
+
+// pubsub.subscribe("giveBoardPlayer",)
+// pubsub.subscribe("data",handleClickComputer)
 
 const playerGameBoard = new GameBoard("player");
 const computerGameBoard = new GameBoard("computer");
@@ -10,15 +14,8 @@ const computerPlayer = new Player("Computer");
 export function createGame() {
   playerCreateShip(playerGameBoard);
   computerCreateShip(computerGameBoard);
-  // gameFlow(player, playerGameBoard, computerPlayer, computerGameBoard);
 }
 
-// function gameFlow(player, playerBoard, computerPlayer, computerBoard) {
-//   console.log(player);
-//   console.log(playerBoard);
-//   console.log(computerPlayer);
-//   console.log(computerBoard);
-// }
 
 function playerCreateShip(playerGameBoard) {
   playerGameBoard.placeShip(new Ship(3), 2, 3);
@@ -56,7 +53,7 @@ export function createGrid() {
       boxPlayer.style["border-width"] = "1px";
 
       gridPlayer.appendChild(boxPlayer);
-      // handleClickComputer(boxPlayer)
+      // pubsub.publish('data',boxPlayer)
     }
   }
 
@@ -81,7 +78,6 @@ export function createGrid() {
       boxComputer.addEventListener("click", function (e) {
         if (boxComputer.style.background === "none") {
           handleClick(e,boxComputer);
-          // handleClickComputer()
         }
       });
 
@@ -89,24 +85,6 @@ export function createGrid() {
     }
   }
 }
-
-
-// function handleClickComputer(boxPlayer) {
-//   const randomRow = Math.floor(Math.random() * 10);
-//   const randomColumn = Math.floor(Math.random() * 10);
-//   if(playerGameBoard.grid[randomRow][randomColumn]!==null){
-//     boxPlayer.style.background = "green";
-//     computerPlayer.makeRandomAttack(playerGameBoard);
-//     playerGameBoard.checkShipsStatus()
-//     computerGameBoard.checkShipsStatus()
-//     if(computerGameBoard.areAllShipsSunk()){
-//       alert("wonnnnnnnnnn")
-//     }
-//   }else{
-//     boxPlayer.style.background = "red";
-//   }
-// }
-
 
 function handleClick(event,boxComputer) {
   const row = event.currentTarget.dataset.row;
@@ -123,12 +101,22 @@ function handleClick(event,boxComputer) {
   }else{
     boxComputer.style.background = "red";
   }
+  console.log(playerGameBoard.grid)
+  console.log(computerGameBoard.grid)
   // console.log(`Clicked on box: (${row}, ${column})`);
   return {
     row,
     column,
   };
 }
+
+// function handleClickComputer(boxPlayer){
+//   setTimeout(() => {
+//     computerPlayer.makeRandomAttack(playerGameBoard);
+//     // boxPlayer.style.background = "green";
+//   },500)
+  
+// }
 
 
 
