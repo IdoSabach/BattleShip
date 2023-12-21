@@ -9,7 +9,7 @@ const player = new Player("Player");
 const computerPlayer = new Player("Computer");
 const main = document.querySelector(".main");
 
-const imagePath = '/src/icons8-boom-96.png';
+const imagePath = "/src/icons8-boom-96.png";
 
 export function createGame() {
   playerCreateShip(playerGameBoard);
@@ -67,11 +67,12 @@ export function createGridPlayer() {
       boxPlayer.dataset.data = playerGameBoard.grid[row][col];
 
       boxPlayer.style["border-style"] = "solid";
-      boxPlayer.style["border-width"] = "1px";
+      boxPlayer.style["border-width"] = "0.5px";
       // boxPlayer.style["background-color"] = " aqua";
 
       gridPlayer.appendChild(boxPlayer);
       boxPlayers.push(boxPlayer);
+
     }
   }
 
@@ -87,8 +88,7 @@ export function colorCell(rowToColor, colToColor) {
       col === colToColor &&
       playerGameBoard.grid[rowToColor][colToColor] === "x"
     ) {
-      boxPlayer.style.backgroundImage =
-        `url(${imagePath})`;
+      boxPlayer.style.backgroundImage = `url(${imagePath})`;
       boxPlayer.style.backgroundSize = "cover";
     } else if (
       row === rowToColor &&
@@ -113,13 +113,14 @@ export function createGrid() {
       boxComputer.dataset.column = col;
 
       boxComputer.style["border-style"] = "solid";
-      boxComputer.style["border-width"] = "1px";
+      boxComputer.style["border-width"] = "0.5px";
       boxComputer.style["border-color"] = "black";
       boxComputer.style.background = "none";
       boxComputer.style.cursor = "pointer";
 
       boxComputerClick(boxComputer);
       gridComputer.appendChild(boxComputer);
+
     }
   }
 }
@@ -141,8 +142,7 @@ function handleClick(event, boxComputer) {
   const column = event.currentTarget.dataset.column;
 
   if (computerGameBoard.grid[row][column] !== null) {
-    boxComputer.style.backgroundImage =
-    `url(${imagePath})`;
+    boxComputer.style.backgroundImage = `url(${imagePath})`;
     boxComputer.style.backgroundSize = "cover";
     player.makeAttack(computerGameBoard, row, column);
     playerGameBoard.checkShipsStatus();
