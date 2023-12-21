@@ -109,7 +109,7 @@ export function createGrid() {
   for (let row = 0; row < 10; row++) {
     for (let col = 0; col < 10; col++) {
       const boxComputer = document.createElement("button");
-      boxComputer.classList.add(".boxOnGridToComputer");
+      boxComputer.classList.add("boxOnGridToComputer");
       boxComputer.dataset.row = row;
       boxComputer.dataset.column = col;
 
