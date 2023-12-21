@@ -3,7 +3,6 @@ import Player from "./classes/player.js";
 import GameBoard from "./classes/gameBoard.js";
 import pubsub from "./pubsub.js";
 
-// import icon from './icons8-boom-96.png'
 
 const playerGameBoard = new GameBoard("player");
 const computerGameBoard = new GameBoard("computer");
@@ -11,7 +10,7 @@ const player = new Player("Player");
 const computerPlayer = new Player("Computer");
 const main = document.querySelector(".main");
 
-const imagePath = "./icons8-boom-96.png";
+const imagePath = "/src/icons8-boom-96.png";
 
 export function createGame() {
   playerCreateShip(playerGameBoard);
