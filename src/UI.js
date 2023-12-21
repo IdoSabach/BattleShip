@@ -11,6 +11,7 @@ const computerPlayer = new Player("Computer");
 const main = document.querySelector(".main");
 
 const imagePath = "/src/icons8-boom-96.png";
+const imagePath1 = "/dist/icons8-boom-96.png";
 
 export function createGame() {
   playerCreateShip(playerGameBoard);
@@ -143,7 +144,7 @@ function handleClick(event, boxComputer) {
   const column = event.currentTarget.dataset.column;
 
   if (computerGameBoard.grid[row][column] !== null) {
-    boxComputer.style.backgroundImage = `url(${imagePath})`;
+    boxComputer.style.backgroundImage = `url(${imagePath1})`;
     boxComputer.style.backgroundSize = "cover";
     player.makeAttack(computerGameBoard, row, column);
     playerGameBoard.checkShipsStatus();
