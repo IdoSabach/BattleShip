@@ -1,51 +1,52 @@
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   /* outline: 1px red solid; */
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
-body{
+body {
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.header{
+.header {
   font-size: 80px;
   padding: 25px;
 }
 
-.footer{
+.footer {
   margin-top: auto;
 }
 
-.main{
+.main {
   width: 100%;
   display: flex;
-  align-items: center;justify-content: center;
+  align-items: center;
+  justify-content: center;
   padding: 50px 0px 50px;
 }
 
-.gridComputer{
+.gridComputer {
   border-style: solid;
   display: grid;
-  grid-template-columns: repeat(10,50px);
-  grid-template-rows: repeat(10,50px);
+  grid-template-columns: repeat(10, 50px);
+  grid-template-rows: repeat(10, 50px);
   margin-left: 50px;
 }
-.gridPlayer{
+.gridPlayer {
   border-style: solid;
   display: grid;
-  grid-template-columns: repeat(10,50px);
-  grid-template-rows: repeat(10,50px);
+  grid-template-columns: repeat(10, 50px);
+  grid-template-rows: repeat(10, 50px);
   margin-right: 50px;
 }
 
-.popup{
-  background: rgba(0,0,0,0.6);
+.popup {
+  background: rgba(0, 0, 0, 0.6);
   width: 100%;
   height: 100%;
   position: absolute;
@@ -58,10 +59,10 @@ body{
   justify-content: center;
 }
 
-.main-box{
+.main-box {
   /* border-style: solid; */
-  width:250px;
-  height:200px;
+  width: 250px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -70,12 +71,12 @@ body{
   border-radius: 16px;
 }
 
-.text{
+.text {
   font-size: 40px;
   margin-bottom: 20px;
 }
 
-.btn{
+.btn {
   font-size: 32px;
   padding: 10px;
   background: none;
@@ -84,8 +85,36 @@ body{
   cursor: pointer;
 }
 
-.btn:hover{
+.btn:hover {
   background-color: rgb(214, 214, 214);
   transform: scale(1.05);
   transition: all 0.5s;
+}
+
+@media (max-width: 767px) {
+  body{
+    color: black;
+  }
+  .main {
+    display: flex;
+    flex-direction: column;
+    padding: 25px 0px 25px;
+  }
+
+  .header{
+    font-size: 52px;
+    padding: 15px;
+  }
+
+  .gridComputer{
+    grid-template-columns: repeat(10, 30px);
+    grid-template-rows: repeat(10, 30px);
+    margin: 20px 0px 0px;
+  }
+
+  .gridPlayer {
+    grid-template-columns: repeat(10, 30px);
+    grid-template-rows: repeat(10, 30px);
+    margin: 0px 0px 20px;
+  }
 }
