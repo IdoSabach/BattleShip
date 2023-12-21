@@ -14,7 +14,7 @@ export default class Player {
       if (!opponentGameBoard.isCoordinateAttacked(row, column)) {
         // If the chosen coordinates are not attacked, make the attack
         success = opponentGameBoard.receiveAttack(row, column);
-        console.log(`${this.name} attacked: (${row}, ${column})`);
+        // console.log(`${this.name} attacked: (${row}, ${column})`);
         colorCell(row, column)
       }
       

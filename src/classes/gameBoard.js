@@ -94,10 +94,10 @@ export default class GameBoard {
       const shipAtLocation = this.grid[row][column];
   
       if (shipAtLocation === null) {
-        console.log(`Missed at (${row}, ${column})`);
+        // console.log(`Missed at (${row}, ${column})`);
         this.grid[row][column] = 'o';
       } else {
-        console.log(`Hit at (${row}, ${column})`);
+        // console.log(`Hit at (${row}, ${column})`);
         shipAtLocation.hits();
         this.grid[row][column] = 'x';
       }

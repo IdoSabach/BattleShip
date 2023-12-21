@@ -12,7 +12,6 @@ const main = document.querySelector(".main");
 export function createGame() {
   playerCreateShip(playerGameBoard);
   computerCreateShip(computerGameBoard);
-  console.log(playerGameBoard);
 }
 
 export function finishGame() {
@@ -85,56 +84,18 @@ export function colorCell(rowToColor, colToColor) {
       col === colToColor &&
       playerGameBoard.grid[rowToColor][colToColor] === "x"
     ) {
-      boxPlayer.style.backgroundColor = "green";
+      boxPlayer.style.backgroundImage =
+        "url('../dist/image/icons8-boom-96.png')";
+      boxPlayer.style.backgroundSize = "cover";
     } else if (
       row === rowToColor &&
       col === colToColor &&
       playerGameBoard.grid[rowToColor][colToColor] === "o"
     ) {
-      boxPlayer.style.backgroundColor = "red";
+      boxPlayer.style.backgroundColor = "#bde0fe";
     }
   });
 }
-
-// export function createGridPlayer(row, column, bool = false) {
-//   const gridPlayer = document.createElement("div");
-//   gridPlayer.classList.add("gridPlayer");
-
-//   if (bool) {
-//     for (let row = 0; row < 10; row++) {
-//       for (let col = 0; col < 10; col++) {
-//         main.appendChild(gridPlayer);
-//         const boxPlayer = document.createElement("div");
-//         boxPlayer.classList.add("boxOnGridToComputer");
-//         boxPlayer.dataset.row = row;
-//         boxPlayer.dataset.column = col;
-//         let data = playerGameBoard.grid[row][col];
-//         console.log(data);
-
-//         boxPlayer.style["border-style"] = "solid";
-//         boxPlayer.style["border-width"] = "1px";
-
-//         gridPlayer.appendChild(boxPlayer);
-//       }
-//     }
-//   } else {
-//     console.log(row, column);
-//     let data = playerGameBoard.grid[row][column];
-//     console.log(data );
-//     const allBoxes = gridPlayer.querySelectorAll(".boxOnGridToComputer");
-//     allBoxes.forEach((box) => {
-//       let data = playerGameBoard.grid[box.dataset.row][box.dataset.column];
-
-//       if (data !== null) {
-//         // Color green if data is not NULL
-//         box.style.backgroundColor = "green";
-//       } else {
-//         // Color red if data is NULL
-//         box.style.backgroundColor = "red";
-//       }
-//     });
-//   }
-// }
 
 export function createGrid() {
   const gridComputer = document.createElement("div");
@@ -176,16 +137,15 @@ function handleClick(event, boxComputer) {
   const column = event.currentTarget.dataset.column;
 
   if (computerGameBoard.grid[row][column] !== null) {
-    boxComputer.style.background = "green";
+    boxComputer.style.backgroundImage =
+      "url('../dist/image/icons8-boom-96.png')";
+    boxComputer.style.backgroundSize = "cover";
     player.makeAttack(computerGameBoard, row, column);
     playerGameBoard.checkShipsStatus();
     computerGameBoard.checkShipsStatus();
   } else {
-    boxComputer.style.background = "red";
+    boxComputer.style.background = "#bde0fe";
   }
-  // console.log(playerGameBoard.grid)
-  // console.log(computerGameBoard.grid)
-  // console.log(`Clicked on box: (${row}, ${column})`);
   return {
     row,
     column,
