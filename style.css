@@ -47,9 +47,10 @@ body {
 
 .popup {
   background: rgba(0, 0, 0, 0.6);
-  width: 100%;
-  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
   position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -60,7 +61,7 @@ body {
 }
 
 .main-box {
-  /* border-style: solid; */
+  border-style: solid;
   width: 250px;
   height: 200px;
   display: flex;
@@ -74,6 +75,7 @@ body {
 .text {
   font-size: 40px;
   margin-bottom: 20px;
+  color: black;
 }
 
 .btn {
@@ -83,6 +85,7 @@ body {
   border-radius: 16px;
   border-style: solid;
   cursor: pointer;
+  color: black;
 }
 
 .btn:hover {
