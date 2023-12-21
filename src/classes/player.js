@@ -1,3 +1,4 @@
+// import { colorOfBoard } from "../UI";
 export default class Player {
   constructor(name) {
     this.name = name;
@@ -14,6 +15,7 @@ export default class Player {
         // If the chosen coordinates are not attacked, make the attack
         success = opponentGameBoard.receiveAttack(row, column);
         console.log(`${this.name} attacked: (${row}, ${column})`);
+        // colorOfBoard(row,column)
       }
   
       // Keep trying until a free spot is found

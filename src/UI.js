@@ -8,10 +8,13 @@ const playerGameBoard = new GameBoard("player");
 const computerGameBoard = new GameBoard("computer");
 const player = new Player("Player");
 const computerPlayer = new Player("Computer");
+const main = document.querySelector(".main");
 
 export function createGame() {
   playerCreateShip(playerGameBoard);
   computerCreateShip(computerGameBoard);
+  console.log(playerGameBoard)
+  
 }
 
 export function finishGame(){
@@ -37,7 +40,7 @@ function playerCreateShip(playerGameBoard) {
   playerGameBoard.placeShip(new Ship(5), 5, 1);
   playerGameBoard.placeShip(new Ship(3), 1, 6, true);
   playerGameBoard.placeShip(new Ship(2), 0, 7, true);
-  console.log(playerGameBoard);
+  // console.log(playerGameBoard);
 }
 
 function computerCreateShip(computerGameBoard) {
@@ -46,35 +49,36 @@ function computerCreateShip(computerGameBoard) {
   computerGameBoard.placeRandomShip(new Ship(5));
   computerGameBoard.placeRandomShip(new Ship(3), true);
   computerGameBoard.placeRandomShip(new Ship(2), true);
-  console.log(computerGameBoard);
+  // console.log(computerGameBoard);
 }
 
-export function createGrid() {
-  const main = document.querySelector(".main");
-
+export function createGridPlayer(){
   const gridPlayer = document.createElement("div");
   gridPlayer.classList.add("gridPlayer");
   main.appendChild(gridPlayer);
-
   for (let row = 0; row < 10; row++) {
     for (let col = 0; col < 10; col++) {
       const boxPlayer = document.createElement("div");
-      boxPlayer.classList.add(".boxPlayerOnGridToPlayer");
+      boxPlayer.classList.add(".boxOnGridToComputer");
       boxPlayer.dataset.row = row;
       boxPlayer.dataset.column = col;
-      // boxPlayer.textContent = `${row}, ${col}`;
+      let data = boxPlayer.dataset.data
+      data = playerGameBoard.grid[row][col]
+      console.log(`${data} - ${row},${col}`)
+
       boxPlayer.style["border-style"] = "solid";
       boxPlayer.style["border-width"] = "1px";
+      boxPlayer.style.background = "none";
 
       gridPlayer.appendChild(boxPlayer);
-      // pubsub.publish('data',boxPlayer)
     }
   }
+} 
 
+export function createGrid() {
   const gridComputer = document.createElement("div");
   gridComputer.classList.add("gridComputer");
   main.appendChild(gridComputer);
-  // let boxComputer
 
   for (let row = 0; row < 10; row++) {
     for (let col = 0; col < 10; col++) {
@@ -82,26 +86,28 @@ export function createGrid() {
       boxComputer.classList.add(".boxOnGridToComputer");
       boxComputer.dataset.row = row;
       boxComputer.dataset.column = col;
-      // boxComputer.textContent = `${row}, ${col}`;
 
       boxComputer.style["border-style"] = "solid";
       boxComputer.style["border-width"] = "1px";
       boxComputer.style.background = "none";
       boxComputer.style.cursor = "pointer";
 
-      boxComputer.addEventListener("click", function (e) {
-        if (boxComputer.style.background === "none") {
-          handleClick(e,boxComputer);
-          computerPlayer.makeRandomAttack(playerGameBoard);
-          setTimeout(()=>{
-            finishGame()
-          },500)
-        }
-      });
-
+      boxComputerClick(boxComputer)
       gridComputer.appendChild(boxComputer);
     }
   }
+}
+
+function boxComputerClick(boxComputer){
+  boxComputer.addEventListener("click", function (e) {
+    if (boxComputer.style.background === "none") {
+      handleClick(e,boxComputer);
+      computerTurn()
+      setTimeout(()=>{
+        finishGame()
+      },500)
+    }
+  });
 }
 
 function handleClick(event,boxComputer) {
@@ -116,8 +122,8 @@ function handleClick(event,boxComputer) {
   }else{
     boxComputer.style.background = "red";
   }
-  console.log(playerGameBoard.grid)
-  console.log(computerGameBoard.grid)
+  // console.log(playerGameBoard.grid)
+  // console.log(computerGameBoard.grid)
   // console.log(`Clicked on box: (${row}, ${column})`);
   return {
     row,
@@ -125,13 +131,8 @@ function handleClick(event,boxComputer) {
   };
 }
 
-// function handleClickComputer(boxPlayer){
-//   setTimeout(() => {
-//     computerPlayer.makeRandomAttack(playerGameBoard);
-//     // boxPlayer.style.background = "green";
-//   },500)
-  
-// }
-
+function computerTurn(){
+  computerPlayer.makeRandomAttack(playerGameBoard);
+}
 
 
