@@ -61,13 +61,14 @@ export function createGridPlayer() {
   for (let row = 0; row < 10; row++) {
     for (let col = 0; col < 10; col++) {
       const boxPlayer = document.createElement("div");
-      boxPlayer.classList.add("boxOnGridToComputer");
+      boxPlayer.classList.add("boxOnGridToPlayer");
       boxPlayer.dataset.row = row;
       boxPlayer.dataset.column = col;
       boxPlayer.dataset.data = playerGameBoard.grid[row][col];
 
       boxPlayer.style["border-style"] = "solid";
       boxPlayer.style["border-width"] = "1px";
+      // boxPlayer.style["background-color"] = " aqua";
 
       gridPlayer.appendChild(boxPlayer);
       boxPlayers.push(boxPlayer);
@@ -113,6 +114,7 @@ export function createGrid() {
 
       boxComputer.style["border-style"] = "solid";
       boxComputer.style["border-width"] = "1px";
+      boxComputer.style["border-color"] = "black";
       boxComputer.style.background = "none";
       boxComputer.style.cursor = "pointer";
 
