@@ -9,7 +9,7 @@ const player = new Player("Player");
 const computerPlayer = new Player("Computer");
 const main = document.querySelector(".main");
 
-const imagePath = '../dist/image/icons8-boom-96.png';
+const imagePath = '/src/icons8-boom-96.png';
 
 export function createGame() {
   playerCreateShip(playerGameBoard);
