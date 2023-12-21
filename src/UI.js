@@ -9,6 +9,8 @@ const player = new Player("Player");
 const computerPlayer = new Player("Computer");
 const main = document.querySelector(".main");
 
+const imagePath = '../dist/image/icons8-boom-96.png';
+
 export function createGame() {
   playerCreateShip(playerGameBoard);
   computerCreateShip(computerGameBoard);
@@ -85,7 +87,7 @@ export function colorCell(rowToColor, colToColor) {
       playerGameBoard.grid[rowToColor][colToColor] === "x"
     ) {
       boxPlayer.style.backgroundImage =
-        "url('../dist/image/icons8-boom-96.png')";
+        `url(${imagePath})`;
       boxPlayer.style.backgroundSize = "cover";
     } else if (
       row === rowToColor &&
@@ -138,7 +140,7 @@ function handleClick(event, boxComputer) {
 
   if (computerGameBoard.grid[row][column] !== null) {
     boxComputer.style.backgroundImage =
-      "url('../dist/image/icons8-boom-96.png')";
+    `url(${imagePath})`;
     boxComputer.style.backgroundSize = "cover";
     player.makeAttack(computerGameBoard, row, column);
     playerGameBoard.checkShipsStatus();
