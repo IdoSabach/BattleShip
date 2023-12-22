@@ -97,14 +97,20 @@ export function colorCell(rowToColor, colToColor) {
       col === colToColor &&
       playerGameBoard.grid[rowToColor][colToColor] === "x"
     ) {
-      boxPlayer.style.backgroundImage = `url(${imagePath})`;
+      setInterval(() => {
+        boxPlayer.style.backgroundImage = `url(${imagePath})`;
+      }, 400);
+      
       boxPlayer.style.backgroundSize = "cover";
     } else if (
       row === rowToColor &&
       col === colToColor &&
       playerGameBoard.grid[rowToColor][colToColor] === "o"
     ) {
-      boxPlayer.style.backgroundColor = "#bde0fe";
+      setInterval(() => {
+        boxPlayer.style.backgroundColor = "#bde0fe";
+      }, 400);
+      
     }
   });
 }
