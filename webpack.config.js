@@ -5,15 +5,15 @@ module.exports = {
   mode: 'production',
   entry: path.resolve(__dirname, 'src/index.js'),
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist'), 
+    filename: 'main.js', 
     publicPath: '/dist/',
   },
   module: {
     rules: [
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
+        type: 'asset/resource', 
       },
     ],
   },
@@ -21,7 +21,6 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         { from: 'src/icons8-boom-96.png', to: 'icons8-boom-96.png' },
-        // Add other image paths if needed
       ],
     }),
   ],
