@@ -55,9 +55,17 @@ const boxPlayers = [];
 
 export function createGridPlayer() {
   const main = document.querySelector("main");
+  const AllGridPlayer = document.createElement("div");
+  AllGridPlayer.classList.add('AllGridPlayer')
   const gridPlayer = document.createElement("div");
+  const yourName = document.createElement('div')
+  yourName.classList.add("yourName") 
+  yourName.textContent = "Player"
+
+  AllGridPlayer.appendChild(yourName)
+  AllGridPlayer.appendChild(gridPlayer)
   gridPlayer.classList.add("gridPlayer");
-  main.appendChild(gridPlayer);
+  main.appendChild(AllGridPlayer);
 
   for (let row = 0; row < 10; row++) {
     for (let col = 0; col < 10; col++) {
@@ -102,9 +110,18 @@ export function colorCell(rowToColor, colToColor) {
 }
 
 export function createGrid() {
+  const AllGridPlayerComputer = document.createElement("div");
+  AllGridPlayerComputer.classList.add('AllGridPlayerComputer')
   const gridComputer = document.createElement("div");
+  const computerName = document.createElement('div')
+  computerName.classList.add("computerName") 
+  computerName.textContent = "Computer"
   gridComputer.classList.add("gridComputer");
-  main.appendChild(gridComputer);
+
+  AllGridPlayerComputer.appendChild(computerName)
+  AllGridPlayerComputer.appendChild(gridComputer)
+  
+  main.appendChild(AllGridPlayerComputer);
 
   for (let row = 0; row < 10; row++) {
     for (let col = 0; col < 10; col++) {
