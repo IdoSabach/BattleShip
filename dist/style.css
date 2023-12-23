@@ -48,6 +48,49 @@ body {
   /* margin-right: 50px; */
 }
 
+.boxForStart{
+  background: rgba(0, 0, 0, 0.8);
+  min-width: 100%;
+  min-height: 100%;
+  position: absolute;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.boxForStartMini{
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 12px;
+}
+
+.title{
+  font-size: 40px;
+  margin: 25px 25px 15px;
+}
+
+.subTitle{
+  font-size: 32px;
+  margin: 10px;
+}
+
+.btnSwitch{
+  font-size: 24px;
+  background-color: black;
+  color: white;
+  padding: 8px;
+  border-radius: 12px;
+  margin: 10px;
+  cursor: pointer;
+}
+
 .popup {
   background: rgba(0, 0, 0, 0.6);
   min-width: 100%;
@@ -64,7 +107,7 @@ body {
 }
 
 .main-box {
-  border-style: solid;
+  /* border-style: solid; */
   width: 250px;
   height: 200px;
   display: flex;
@@ -88,11 +131,11 @@ body {
   border-radius: 16px;
   border-style: solid;
   cursor: pointer;
-  color: black;
+  color: white;
+  background-color: black;
 }
 
 .btn:hover {
-  background-color: rgb(214, 214, 214);
   transform: scale(1.05);
   transition: all 0.5s;
 }
@@ -106,6 +149,19 @@ body {
 .yourName,.computerName{
   font-size: 32px;
   margin-bottom:15px;
+}
+
+.boardOfStart{
+  border-style: solid;
+  border-width: 0.7px;
+  display: grid;
+  grid-template-columns: repeat(10, 40px);
+  grid-template-rows: repeat(10, 40px);
+  margin: 10px 0px 50px;
+}
+
+.boxStart{
+  color: black;
 }
 
 
@@ -139,5 +195,21 @@ body {
 
   .AllGridPlayerComputer{
     margin-top: 25px;
+  }
+
+  .title{
+    font-size: 24px;
+  }
+  .subTitle{
+    font-size: 20px;
+  }
+
+  .boardOfStart{
+    border-style: solid;
+    border-width: 0.7px;
+    display: grid;
+    grid-template-columns: repeat(10, 30px);
+    grid-template-rows: repeat(10, 30px);
+    margin: 10px 0px 50px;
   }
 }
