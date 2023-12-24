@@ -47,7 +47,7 @@ export default class GameBoard {
   
 
   placeShipInRow(ship, row, column) {
-    if (row+ship.lengthOfShip>10) {
+    if (column+ship.lengthOfShip-1>10) {
       // console.log( column )
       // console.log( ship.lengthOfShip)
       // console.log( column + ship.lengthOfShip)
@@ -69,7 +69,7 @@ export default class GameBoard {
   }
 
   placeShipInColumn(ship, row, column) {
-    if (row+ship.lengthOfShip>10) {
+    if (row+ship.lengthOfShip-1>10) {
       // console.log( column + ship.lengthOfShip)
       throw new Error('Cannot place the ship at the given coordinates. Out of bounds.123');
     }

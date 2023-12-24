@@ -1,4 +1,4 @@
-import { playerGameBoard, playerCreateShip } from "./UI";
+import { playerGameBoard, playerCreateShip} from "./UI";
 
 const board = document.querySelector(".boardOfStart");
 const btn = document.querySelector(".btnSwitch");

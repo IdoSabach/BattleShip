@@ -56,7 +56,6 @@ export function playerCreateShip(
   col,
   bool = false
 ) {
-  // console.log(`${playerGameBoard},${length},${row},${col}`);
   playerGameBoard.placeShip(new Ship(length), row, col, bool);
 }
 
