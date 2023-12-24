@@ -1,7 +1,6 @@
 import Ship from "./classes/ship.js";
 import Player from "./classes/player.js";
 import GameBoard from "./classes/gameBoard.js";
-import pubsub from "./pubsub.js";
 
 export const playerGameBoard = new GameBoard("player");
 const computerGameBoard = new GameBoard("computer");
@@ -35,14 +34,14 @@ export function markerBox(length, row, col,bool = false) {
             `.boxOnGridToPlayer[data-row="${row}"][data-column="${col+i}"]`
           );
           if (targetBox) {
-            targetBox.style.backgroundColor = "#e5e5e5";
+            targetBox.style.backgroundColor = "#adb5bd";
           }
         }else{
           const targetBox = document.querySelector(
             `.boxOnGridToPlayer[data-row="${row+i}"][data-column="${col}"]`
           );
           if (targetBox) {
-            targetBox.style.backgroundColor = "#e5e5e5";
+            targetBox.style.backgroundColor = "#adb5bd";
           }
         }
         
@@ -193,6 +192,17 @@ export function createGrid() {
       gridComputer.appendChild(boxComputer);
     }
   }
+  //add hover
+  // const boxComputer = document.querySelectorAll('.boxOnGridToComputer')
+
+  // boxComputer.forEach(box=>{
+  //   box.addEventListener('mouseover',function(){
+  //     box.style.backgroundColor = "black"
+  //   })
+  //   box.addEventListener('mouseout', function() {
+  //     box.style.backgroundColor = "white"; // Reset to default background color
+  // });
+  // })
 }
 
 function boxComputerClick(boxComputer) {
