@@ -49,11 +49,10 @@ function dragDrop() {
 
   ships.forEach((ship) => {
     ship.addEventListener("dragstart", function (e) {
-      const shipName = ship.classList[1]; // Get the class name of the ship
+      const shipName = ship.classList[1]; 
       if (!shipsPlaced[shipName]) {
         e.dataTransfer.setData("text/plain", shipName);
       } else {
-        // Ship already placed, prevent dragging again
         e.preventDefault();
         console.log(ship.dataset.length);
       }
@@ -137,6 +136,5 @@ function dragDrop() {
 console.log(boardArray);
 
 function placeShip(length,row,col){
-
   console.log(`this is places ${length},${row},${col}`)
 }
