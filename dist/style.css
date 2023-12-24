@@ -165,10 +165,11 @@ body {
 }
 
 .ships{
-  max-width: 400px;
+  max-width: 60%;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   /* grid-template-columns: repeat(5,1fr); */
   column-gap: 10px;
   row-gap: 10px;
@@ -177,8 +178,9 @@ body {
 }
 
 .ship{
-  background-color: aqua;
+  background-color: black;
   border-radius: 20px;
+  cursor: grab;
 }
 
 .one{

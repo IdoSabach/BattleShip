@@ -1,3 +1,5 @@
+import { playerGameBoard ,playerCreateShip } from "./UI";
+
 const board = document.querySelector(".boardOfStart");
 const btn = document.querySelector(".btnSwitch");
 const allBox = document.querySelector(".boxForStart");
@@ -10,11 +12,15 @@ export function exportFunc() {
 }
 
 let boardArray = [];
-
 const shipsPlaced = {};
 
-console.log(boardArray);
 
+
+function checkCloseBoard(){
+  if(Object.keys(shipsPlaced).length === 5){
+    allBox .style.display = "none"
+  }
+}
 
 function createBoardStart() {
   for (let row = 0; row < 10; row++) {
@@ -40,7 +46,7 @@ function closeBox() {
   btn.addEventListener("click", function () {
     // allBox.style.display = "none";
     isColumnOrientation = !isColumnOrientation;
-    console.log(isColumnOrientation);
+    // console.log(isColumnOrientation);
   });
 }
 
@@ -52,9 +58,10 @@ function dragDrop() {
       const shipName = ship.classList[1]; 
       if (!shipsPlaced[shipName]) {
         e.dataTransfer.setData("text/plain", shipName);
+        // console.log(shipsPlaced)
       } else {
         e.preventDefault();
-        console.log(ship.dataset.length);
+        // console.log(ship.dataset.length);
       }
     });
   });
@@ -74,6 +81,7 @@ function dragDrop() {
         box.appendChild(ship);
         updateBoardArray(shipName, row, col);
         shipsPlaced[shipName] = true;
+        checkCloseBoard()
       }
     });
   });
@@ -128,13 +136,14 @@ function dragDrop() {
       }
     }
 
-    placeShip(length,row,col)
+    placeShip(shipLength,row,col)
 
-    console.log("Updated Board Array:", boardArray);
+    // console.log("Updated Board Array:", boardArray);
   }
 }
-console.log(boardArray);
+// console.log(boardArray);
+// console.log(shipsPlaced)
 
 function placeShip(length,row,col){
-  console.log(`this is places ${length},${row},${col}`)
+  playerCreateShip(playerGameBoard,length,row,col)
 }

@@ -3,17 +3,16 @@ import Player from "./classes/player.js";
 import GameBoard from "./classes/gameBoard.js";
 import pubsub from "./pubsub.js";
 
-
-const playerGameBoard = new GameBoard("player");
+export const playerGameBoard = new GameBoard("player");
 const computerGameBoard = new GameBoard("computer");
 const player = new Player("Player");
 const computerPlayer = new Player("Computer");
 const main = document.querySelector(".main");
 
-const imagePath = 'icons8-boom-96.png';
+const imagePath = "icons8-boom-96.png";
 
 export function createGame() {
-  playerCreateShip(playerGameBoard);
+  // playerCreateShip(playerGameBoard);
   computerCreateShip(computerGameBoard);
 }
 
@@ -31,15 +30,14 @@ export function finishGame() {
   btn.addEventListener("click", function () {
     location.reload();
   });
+  // console.log(computerGameBoard)
+  // console.log(playerGameBoard)
 }
 
-function playerCreateShip(playerGameBoard) {
-  playerGameBoard.placeShip(new Ship(3), 2, 3);
-  playerGameBoard.placeShip(new Ship(4), 4, 5);
-  playerGameBoard.placeShip(new Ship(5), 5, 1);
-  playerGameBoard.placeShip(new Ship(3), 1, 6, true);
-  playerGameBoard.placeShip(new Ship(2), 0, 7, true);
-  // console.log(playerGameBoard);
+export function playerCreateShip(playerGameBoard, length, row, col) {
+  // console.log(`${playerGameBoard},${length},${row},${col}`);
+  playerGameBoard.placeShip(new Ship(length), row, col);
+
 }
 
 function computerCreateShip(computerGameBoard) {
@@ -56,14 +54,14 @@ const boxPlayers = [];
 export function createGridPlayer() {
   const main = document.querySelector("main");
   const AllGridPlayer = document.createElement("div");
-  AllGridPlayer.classList.add('AllGridPlayer')
+  AllGridPlayer.classList.add("AllGridPlayer");
   const gridPlayer = document.createElement("div");
-  const yourName = document.createElement('div')
-  yourName.classList.add("yourName") 
-  yourName.textContent = "Player"
+  const yourName = document.createElement("div");
+  yourName.classList.add("yourName");
+  yourName.textContent = "Player";
 
-  AllGridPlayer.appendChild(yourName)
-  AllGridPlayer.appendChild(gridPlayer)
+  AllGridPlayer.appendChild(yourName);
+  AllGridPlayer.appendChild(gridPlayer);
   gridPlayer.classList.add("gridPlayer");
   main.appendChild(AllGridPlayer);
 
@@ -77,11 +75,9 @@ export function createGridPlayer() {
 
       boxPlayer.style["border-style"] = "solid";
       boxPlayer.style["border-width"] = "0.5px";
-      // boxPlayer.style["background-color"] = " aqua";
 
       gridPlayer.appendChild(boxPlayer);
       boxPlayers.push(boxPlayer);
-
     }
   }
 
@@ -100,7 +96,7 @@ export function colorCell(rowToColor, colToColor) {
       setInterval(() => {
         boxPlayer.style.backgroundImage = `url(${imagePath})`;
       }, 400);
-      
+
       boxPlayer.style.backgroundSize = "cover";
     } else if (
       row === rowToColor &&
@@ -110,23 +106,22 @@ export function colorCell(rowToColor, colToColor) {
       setInterval(() => {
         boxPlayer.style.backgroundColor = "#bde0fe";
       }, 400);
-      
     }
   });
 }
 
 export function createGrid() {
   const AllGridPlayerComputer = document.createElement("div");
-  AllGridPlayerComputer.classList.add('AllGridPlayerComputer')
+  AllGridPlayerComputer.classList.add("AllGridPlayerComputer");
   const gridComputer = document.createElement("div");
-  const computerName = document.createElement('div')
-  computerName.classList.add("computerName") 
-  computerName.textContent = "Computer"
+  const computerName = document.createElement("div");
+  computerName.classList.add("computerName");
+  computerName.textContent = "Computer";
   gridComputer.classList.add("gridComputer");
 
-  AllGridPlayerComputer.appendChild(computerName)
-  AllGridPlayerComputer.appendChild(gridComputer)
-  
+  AllGridPlayerComputer.appendChild(computerName);
+  AllGridPlayerComputer.appendChild(gridComputer);
+
   main.appendChild(AllGridPlayerComputer);
 
   for (let row = 0; row < 10; row++) {
@@ -144,7 +139,6 @@ export function createGrid() {
 
       boxComputerClick(boxComputer);
       gridComputer.appendChild(boxComputer);
-
     }
   }
 }

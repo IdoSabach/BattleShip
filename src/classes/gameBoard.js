@@ -47,15 +47,15 @@ export default class GameBoard {
   
 
   placeShipInRow(ship, row, column) {
-    if (row + ship.lengthOfShip > this.rows || column + ship.lengthOfShip > this.columns) {
-      throw new Error('Cannot place the ship at the given coordinates. Out of bounds.');
-    }
+    // if (row + ship.lengthOfShip > this.rows || column + ship.lengthOfShip > this.columns) {
+    //   throw new Error('Cannot place the ship at the given coordinates. Out of bounds.');
+    // }
 
-    for (let i = 0; i < ship.lengthOfShip; i++) {
-      if (this.grid[row][column + i] !== null) {
-        throw new Error('Cannot place the ship at the given coordinates. Another ship is already there.');
-      }
-    }
+    // for (let i = 0; i < ship.lengthOfShip; i++) {
+    //   if (this.grid[row][column + i] !== null) {
+    //     throw new Error('Cannot place the ship at the given coordinates. Another ship is already there.');
+    //   }
+    // }
 
     for (let i = 0; i < ship.lengthOfShip; i++) {
       this.grid[row][column + i] = ship;
@@ -65,15 +65,15 @@ export default class GameBoard {
   }
 
   placeShipInColumn(ship, row, column) {
-    if (row + ship.lengthOfShip > this.rows || column + ship.lengthOfShip > this.columns) {
-      throw new Error('Cannot place the ship at the given coordinates. Out of bounds.');
-    }
+    // if (row + ship.lengthOfShip > this.rows || column + ship.lengthOfShip > this.columns) {
+    //   throw new Error('Cannot place the ship at the given coordinates. Out of bounds.');
+    // }
 
-    for (let i = 0; i < ship.lengthOfShip; i++) {
-      if (this.grid[row + i][column] !== null) {
-        throw new Error('Cannot place the ship at the given coordinates. Another ship is already there.');
-      }
-    }
+    // for (let i = 0; i < ship.lengthOfShip; i++) {
+    //   if (this.grid[row + i][column] !== null) {
+    //     throw new Error('Cannot place the ship at the given coordinates. Another ship is already there.');
+    //   }
+    // }
 
     for (let i = 0; i < ship.lengthOfShip; i++) {
       this.grid[row + i][column] = ship;
