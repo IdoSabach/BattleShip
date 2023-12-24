@@ -10,12 +10,12 @@ document.addEventListener('DOMContentLoaded', function () {
   createGrid();
 });
 
-const box = document.querySelector('.boxForStart')
+// const box = document.querySelector('.boxForStart')
 
-box.addEventListener('touchmove', function(event) {
-  event.preventDefault();
-  // Your dragging logic here
-});
+// box.addEventListener('touchmove', function(event) {
+//   event.preventDefault();
+//   // Your dragging logic here
+// });
 
 
 

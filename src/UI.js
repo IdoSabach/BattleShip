@@ -8,12 +8,27 @@ const computerGameBoard = new GameBoard("computer");
 const player = new Player("Player");
 const computerPlayer = new Player("Computer");
 const main = document.querySelector(".main");
+const allBox = document.querySelector(".boxForStart");
+
+const btnRandom = document.querySelector(".random");
 
 const imagePath = "icons8-boom-96.png";
 
 export function createGame() {
   // playerCreateShip(playerGameBoard);
   computerCreateShip(computerGameBoard);
+  quickMatch()
+}
+
+function quickMatch() {
+  btnRandom.addEventListener("click", function () {
+    playerGameBoard.placeRandomShip(new Ship(3));
+    playerGameBoard.placeRandomShip(new Ship(4));
+    playerGameBoard.placeRandomShip(new Ship(5));
+    playerGameBoard.placeRandomShip(new Ship(3), true);
+    playerGameBoard.placeRandomShip(new Ship(2), true);
+    allBox.style.display = "none";
+  });
 }
 
 export function finishGame() {
@@ -34,10 +49,15 @@ export function finishGame() {
   // console.log(playerGameBoard)
 }
 
-export function playerCreateShip(playerGameBoard, length, row, col) {
+export function playerCreateShip(
+  playerGameBoard,
+  length,
+  row,
+  col,
+  bool = false
+) {
   // console.log(`${playerGameBoard},${length},${row},${col}`);
-  playerGameBoard.placeShip(new Ship(length), row, col);
-
+  playerGameBoard.placeShip(new Ship(length), row, col, bool);
 }
 
 function computerCreateShip(computerGameBoard) {

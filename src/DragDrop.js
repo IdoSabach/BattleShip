@@ -1,9 +1,15 @@
-import { playerGameBoard ,playerCreateShip } from "./UI";
+import { playerGameBoard, playerCreateShip } from "./UI";
 
 const board = document.querySelector(".boardOfStart");
 const btn = document.querySelector(".btnSwitch");
 const allBox = document.querySelector(".boxForStart");
 const ships = document.querySelectorAll(".ship");
+
+const ship1 = document.querySelector(".one");
+const ship2 = document.querySelector(".two");
+const ship3 = document.querySelector(".three");
+const ship4 = document.querySelector(".four");
+const ship5 = document.querySelector(".five");
 
 export function exportFunc() {
   createBoardStart();
@@ -14,9 +20,9 @@ export function exportFunc() {
 let boardArray = [];
 const shipsPlaced = {};
 
-function checkCloseBoard(){
-  if(Object.keys(shipsPlaced).length === 5){
-    allBox .style.display = "none"
+function checkCloseBoard() {
+  if (Object.keys(shipsPlaced).length === 5) {
+    allBox.style.display = "none";
   }
 }
 
@@ -41,10 +47,55 @@ let isColumnOrientation = false;
 
 function closeBox() {
   btn.addEventListener("click", function () {
-    // allBox.style.display = "none";
     isColumnOrientation = !isColumnOrientation;
-    // console.log(isColumnOrientation);
+    colShips();
   });
+}
+
+function colShips() {
+  if (isColumnOrientation) {
+    if (ship1 && ship1.getAttribute("data-towed") === "false") {
+      ship1.style.width = "40px";
+      ship1.style.height = "80px";
+    }
+    if (ship2 && ship2.getAttribute("data-towed") === "false") {
+      ship2.style.width = "40px";
+      ship2.style.height = "120px";
+    }
+    if (ship3 && ship3.getAttribute("data-towed") === "false") {
+      ship3.style.width = "40px";
+      ship3.style.height = "120px";
+    }
+    if (ship4 && ship4.getAttribute("data-towed") === "false") {
+      ship4.style.width = "40px";
+      ship4.style.height = "160px";
+    }
+    if (ship5 && ship5.getAttribute("data-towed") === "false") {
+      ship5.style.width = "40px";
+      ship5.style.height = "200px";
+    }
+  } else {
+    if (ship1 && ship1.getAttribute("data-towed") === "false") {
+      ship1.style.width = "80px";
+      ship1.style.height = "40px";
+    }
+    if (ship2 && ship2.getAttribute("data-towed") === "false") {
+      ship2.style.width = "120px";
+      ship2.style.height = "40px";
+    }
+    if (ship3 && ship3.getAttribute("data-towed") === "false") {
+      ship3.style.width = "120px";
+      ship3.style.height = "40px";
+    }
+    if (ship4 && ship4.getAttribute("data-towed") === "false") {
+      ship4.style.width = "160px";
+      ship4.style.height = "40px";
+    }
+    if (ship5 && ship5.getAttribute("data-towed") === "false") {
+      ship5.style.width = "200px";
+      ship5.style.height = "40px";
+    }
+  }
 }
 
 function dragDrop() {
@@ -52,7 +103,7 @@ function dragDrop() {
 
   ships.forEach((ship) => {
     ship.addEventListener("dragstart", function (e) {
-      const shipName = ship.classList[1]; 
+      const shipName = ship.classList[1];
       if (!shipsPlaced[shipName]) {
         e.dataTransfer.setData("text/plain", shipName);
         // console.log(shipsPlaced)
@@ -78,7 +129,8 @@ function dragDrop() {
         box.appendChild(ship);
         updateBoardArray(shipName, row, col);
         shipsPlaced[shipName] = true;
-        checkCloseBoard()
+        checkCloseBoard();
+        ship.setAttribute("data-towed", "true");
       }
     });
   });
@@ -125,15 +177,14 @@ function dragDrop() {
     // console.log(shipLength);
     if (isColumnOrientation) {
       for (let i = 0; i < shipLength; i++) {
-        boardArray[row + i][col] = "x"; 
+        boardArray[row + i][col] = "x";
       }
     } else {
       for (let i = 0; i < shipLength; i++) {
-        boardArray[row][col + i] = "x"; 
+        boardArray[row][col + i] = "x";
       }
     }
-
-    placeShip(shipLength,row,col)
+    placeShip(shipLength, row, col);
 
     // console.log("Updated Board Array:", boardArray);
   }
@@ -141,6 +192,11 @@ function dragDrop() {
 // console.log(boardArray);
 // console.log(shipsPlaced)
 
-function placeShip(length,row,col){
-  playerCreateShip(playerGameBoard,length,row,col)
+function placeShip(length, row, col) {
+  if(isColumnOrientation){
+    playerCreateShip(playerGameBoard, length, row, col,true);
+  }else{
+    playerCreateShip(playerGameBoard, length, row, col);
+  }
+  
 }
