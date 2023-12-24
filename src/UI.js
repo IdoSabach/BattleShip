@@ -18,7 +18,39 @@ export function createGame() {
   // playerCreateShip(playerGameBoard);
   computerCreateShip(computerGameBoard);
   quickMatch()
+  
 }
+
+export function markerBox(length, row, col,bool = false) {
+  const boxes = document.querySelectorAll('.boxOnGridToPlayer');
+  
+  boxes.forEach(box => {
+    const boxRow = parseInt(box.dataset.row);
+    const boxCol = parseInt(box.dataset.column);
+
+    if (boxRow === row && boxCol === col) {
+      for (let i = 0; i < length; i++) {
+        if(!bool){
+          const targetBox = document.querySelector(
+            `.boxOnGridToPlayer[data-row="${row}"][data-column="${col+i}"]`
+          );
+          if (targetBox) {
+            targetBox.style.backgroundColor = "#e5e5e5";
+          }
+        }else{
+          const targetBox = document.querySelector(
+            `.boxOnGridToPlayer[data-row="${row+i}"][data-column="${col}"]`
+          );
+          if (targetBox) {
+            targetBox.style.backgroundColor = "#e5e5e5";
+          }
+        }
+        
+      }
+    }
+  });
+}
+
 
 function quickMatch() {
   btnRandom.addEventListener("click", function () {
@@ -28,6 +60,7 @@ function quickMatch() {
     playerGameBoard.placeRandomShip(new Ship(3), true);
     playerGameBoard.placeRandomShip(new Ship(2), true);
     allBox.style.display = "none";
+    markerBox()
   });
 }
 

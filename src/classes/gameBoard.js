@@ -1,3 +1,5 @@
+import { markerBox } from "../UI";
+
 export default class GameBoard {
   constructor(name) {
     this.rows = 10;
@@ -32,8 +34,10 @@ export default class GameBoard {
       try {
         if (isVertical) {
           this.placeShipInColumn(ship, randomRow, randomColumn);
+          markerBox(ship.length, randomRow , randomColumn,true)
         } else {
           this.placeShipInRow(ship, randomRow, randomColumn);
+          markerBox(ship.length, randomRow , randomColumn)
         }
         
         placedSuccessfully = true;

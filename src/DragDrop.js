@@ -1,4 +1,4 @@
-import { playerGameBoard, playerCreateShip} from "./UI";
+import { playerGameBoard, playerCreateShip ,markerBox} from "./UI";
 
 const board = document.querySelector(".boardOfStart");
 const btn = document.querySelector(".btnSwitch");
@@ -195,8 +195,10 @@ function dragDrop() {
 function placeShip(length, row, col) {
   if(isColumnOrientation){
     playerCreateShip(playerGameBoard, length, row, col,true);
+    markerBox(length,row, col,true)
   }else{
     playerCreateShip(playerGameBoard, length, row, col);
+    markerBox(length,row, col)
   }
   
 }
