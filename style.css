@@ -135,6 +135,18 @@ body {
   background-color: black;
 }
 
+.random{
+  font-size: 24px;
+  padding: 10px;
+  background: none;
+  border-radius: 16px;
+  border-style: solid;
+  cursor: pointer;
+  color: white;
+  background-color: black;
+  margin-bottom: 15px;
+}
+
 .btn:hover {
   transform: scale(1.05);
   transition: all 0.5s;
@@ -173,7 +185,6 @@ body {
   /* grid-template-columns: repeat(5,1fr); */
   column-gap: 10px;
   row-gap: 10px;
-  word-wrap: break-word;
   margin-bottom: 15px;
 }
 
@@ -212,7 +223,9 @@ body {
   height: 40px;
   grid-column: span 3;
 }
-
+.expanded {
+  height: auto !important; /* Set to auto to match the width */
+}
 
 @media (max-width: 767px) {
   body{
