@@ -9,6 +9,8 @@ const computerPlayer = new Player("Computer");
 const main = document.querySelector(".main");
 const allBox = document.querySelector(".boxForStart");
 
+const soundPath = '102810__redbulldog98__boom.wav';
+
 const btnRandom = document.querySelector(".random");
 
 const imagePath = "icons8-boom-96.png";
@@ -147,6 +149,7 @@ export function colorCell(rowToColor, colToColor) {
       setInterval(() => {
         boxPlayer.style.backgroundImage = `url(${imagePath})`;
       }, 400);
+      playSound(soundPath);
 
       boxPlayer.style.backgroundSize = "cover";
     } else if (
@@ -159,6 +162,11 @@ export function colorCell(rowToColor, colToColor) {
       }, 400);
     }
   });
+}
+
+function playSound(soundPath) {
+  const audio = new Audio(soundPath);
+  audio.play();
 }
 
 export function createGrid() {
@@ -224,6 +232,7 @@ function handleClick(event, boxComputer) {
   if (computerGameBoard.grid[row][column] !== null) {
     boxComputer.style.backgroundImage = `url(${imagePath})`;
     boxComputer.style.backgroundSize = "cover";
+    playSound(soundPath);
     player.makeAttack(computerGameBoard, row, column);
     playerGameBoard.checkShipsStatus();
     computerGameBoard.checkShipsStatus();

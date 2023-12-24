@@ -21,6 +21,7 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         { from: 'src/icons8-boom-96.png', to: 'icons8-boom-96.png' },
+        { from: 'src/102810__redbulldog98__boom.wav', to: '102810__redbulldog98__boom.wav' },
       ],
     }),
   ],
