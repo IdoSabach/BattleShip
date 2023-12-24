@@ -1,14 +1,21 @@
 import { createGridPlayer,createGrid,createGame} from "./UI";
-import { createBoardStart,closeBox } from "./DragDrop";
+import { exportFunc } from "./DragDrop";
 
 
 document.addEventListener('DOMContentLoaded', function () {
   // Your code here
-  createBoardStart()
+  exportFunc()
   createGame();
   createGridPlayer()
   createGrid();
-  closeBox()
 });
+
+const box = document.querySelector('.boxForStart')
+
+box.addEventListener('touchmove', function(event) {
+  event.preventDefault();
+  // Your dragging logic here
+});
+
 
 
