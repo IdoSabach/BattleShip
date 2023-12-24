@@ -26,7 +26,7 @@ body {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   padding: 25px 0px 25px;
 }
 
@@ -36,7 +36,7 @@ body {
   display: grid;
   grid-template-columns: repeat(10, 50px);
   grid-template-rows: repeat(10, 50px);
-  /* margin-left: 50px; */
+  margin-left: 50px;
 }
 
 .gridPlayer {
@@ -45,7 +45,7 @@ body {
   display: grid;
   grid-template-columns: repeat(10, 50px);
   grid-template-rows: repeat(10, 50px);
-  /* margin-right: 50px; */
+  margin-right: 50px;
 }
 
 .boxForStart{
@@ -157,12 +157,59 @@ body {
   display: grid;
   grid-template-columns: repeat(10, 40px);
   grid-template-rows: repeat(10, 40px);
-  margin: 10px 0px 50px;
+  margin: 10px 0px 15px;
+  z-index: 9999;
 }
 
 .boxStart{
   color: black;
 }
+
+.ships{
+  display: flex;
+  align-items: center;
+  /* border-style: dashed; */
+  /* margin: 0px 0px 15px; */
+  /* flex-direction: column; */
+}
+
+.ship{
+  /* width: 40px;
+  height: 40px; */
+  background-color: aqua;
+}
+
+.one{
+  width:80px;
+  height: 40px;
+}
+
+.two{
+  width:120px;
+  height: 40px;
+}
+
+.three{
+  width:120px;
+  height: 40px;
+}
+
+.four{
+  width:160px;
+  height: 40px;
+}
+
+.five{
+  width:200px;
+  height: 40px;
+}
+
+
+
+/* .ship.placed {
+  opacity: 0.5;
+} */
+
 
 
 
@@ -184,13 +231,13 @@ body {
   .gridComputer{
     grid-template-columns: repeat(10, 30px);
     grid-template-rows: repeat(10, 30px);
-    /* margin: 20px 0px 0px; */
+    margin: 0px 0px 0px;
   }
 
   .gridPlayer {
     grid-template-columns: repeat(10, 30px);
     grid-template-rows: repeat(10, 30px);
-    /* margin: 0px 0px 20px; */
+    margin: 0px 0px 0px;
   }
 
   .AllGridPlayerComputer{
@@ -210,6 +257,14 @@ body {
     display: grid;
     grid-template-columns: repeat(10, 30px);
     grid-template-rows: repeat(10, 30px);
-    margin: 10px 0px 50px;
+    margin: 10px 0px 15px;
+  }
+
+  .ship{
+    width: 30px;
+    height: 30px;
+    background-color: aqua;
+    /* margin: 5px 5px 5px; */
+    touch-action: manipulation;
   }
 }
