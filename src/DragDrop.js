@@ -14,8 +14,6 @@ export function exportFunc() {
 let boardArray = [];
 const shipsPlaced = {};
 
-
-
 function checkCloseBoard(){
   if(Object.keys(shipsPlaced).length === 5){
     allBox .style.display = "none"
@@ -38,7 +36,6 @@ function createBoardStart() {
     }
   }
 }
-console.log(boardArray);
 
 let isColumnOrientation = false;
 
@@ -125,7 +122,7 @@ function dragDrop() {
     const shipLength = parseInt(
       document.querySelector(`.${shipName}`).dataset.length
     );
-    console.log(shipLength);
+    // console.log(shipLength);
     if (isColumnOrientation) {
       for (let i = 0; i < shipLength; i++) {
         boardArray[row + i][col] = "x"; 
