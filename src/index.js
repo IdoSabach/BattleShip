@@ -1,21 +1,16 @@
 import { createGridPlayer,createGrid,createGame} from "./UI";
 import { exportFunc } from "./DragDrop";
+import { audioFun } from "./audio";
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  // Your code here
   exportFunc()
   createGame();
   createGridPlayer()
   createGrid();
+  audioFun()
 });
 
-// const box = document.querySelector('.boxForStart')
-
-// box.addEventListener('touchmove', function(event) {
-//   event.preventDefault();
-//   // Your dragging logic here
-// });
 
 
 
