@@ -3,7 +3,11 @@ import { playerGameBoard, playerCreateShip ,markerBox} from "./UI";
 const board = document.querySelector(".boardOfStart");
 const btn = document.querySelector(".btnSwitch");
 const allBox = document.querySelector(".boxForStart");
+const shipsBox = document.querySelector(".ships");
+const subTitle = document.querySelector(".subTitle");
 const ships = document.querySelectorAll(".ship");
+
+
 
 const ship1 = document.querySelector(".one");
 const ship2 = document.querySelector(".two");
@@ -15,6 +19,12 @@ export function exportFunc() {
   createBoardStart();
   closeBox();
   dragDrop();
+  if (window.innerWidth < 767) {
+    board.style.display = "none"
+    btn.style.display = "none"
+    shipsBox.style.display = "none"
+    subTitle.style.display = "none"
+  }
 }
 
 let boardArray = [];
@@ -55,45 +65,45 @@ function closeBox() {
 function colShips() {
   if (isColumnOrientation) {
     if (ship1 && ship1.getAttribute("data-towed") === "false") {
-      ship1.style.width = "40px";
-      ship1.style.height = "80px";
+      ship1.style.width = "30px";
+      ship1.style.height = "60px";
     }
     if (ship2 && ship2.getAttribute("data-towed") === "false") {
-      ship2.style.width = "40px";
-      ship2.style.height = "120px";
+      ship2.style.width = "30px";
+      ship2.style.height = "90px";
     }
     if (ship3 && ship3.getAttribute("data-towed") === "false") {
-      ship3.style.width = "40px";
-      ship3.style.height = "120px";
+      ship3.style.width = "30px";
+      ship3.style.height = "90px";
     }
     if (ship4 && ship4.getAttribute("data-towed") === "false") {
-      ship4.style.width = "40px";
-      ship4.style.height = "160px";
+      ship4.style.width = "30px";
+      ship4.style.height = "120px";
     }
     if (ship5 && ship5.getAttribute("data-towed") === "false") {
-      ship5.style.width = "40px";
-      ship5.style.height = "200px";
+      ship5.style.width = "30px";
+      ship5.style.height = "150px";
     }
   } else {
     if (ship1 && ship1.getAttribute("data-towed") === "false") {
-      ship1.style.width = "80px";
-      ship1.style.height = "40px";
+      ship1.style.width = "60px";
+      ship1.style.height = "30px";
     }
     if (ship2 && ship2.getAttribute("data-towed") === "false") {
-      ship2.style.width = "120px";
-      ship2.style.height = "40px";
+      ship2.style.width = "90px";
+      ship2.style.height = "30px";
     }
     if (ship3 && ship3.getAttribute("data-towed") === "false") {
-      ship3.style.width = "120px";
-      ship3.style.height = "40px";
+      ship3.style.width = "90px";
+      ship3.style.height = "30px";
     }
     if (ship4 && ship4.getAttribute("data-towed") === "false") {
-      ship4.style.width = "160px";
-      ship4.style.height = "40px";
+      ship4.style.width = "120px";
+      ship4.style.height = "30px";
     }
     if (ship5 && ship5.getAttribute("data-towed") === "false") {
-      ship5.style.width = "200px";
-      ship5.style.height = "40px";
+      ship5.style.width = "150px";
+      ship5.style.height = "30px";
     }
   }
 }
