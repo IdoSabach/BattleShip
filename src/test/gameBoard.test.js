@@ -1,5 +1,4 @@
-// const GameBoard = require('../classes/gameBoard');
-// const Ship = require('../classes/ship');
+
 
 import Ship from '../classes/ship';
 import GameBoard from '../classes/gameBoard';
@@ -25,19 +24,14 @@ describe('GameBoard', () => {
     expect(gameBoard.grid[2][5]).toBe(ship);
 
     const overlappingShip = new Ship(2);
-    // expect(() => gameBoard.placeShip(overlappingShip, 2, 4)).toThrowError(/Cannot place the ship at the given coordinates. Another ship is already there./);
-
     const outOfBoundsShip = new Ship(4);
-    // expect(() => gameBoard.placeShip(outOfBoundsShip, 8, 8)).toThrowError(/Cannot place the ship at the given coordinates. Out of bounds./);
+
   });
 
   it('should handle incorrect ship placement', () => {
     const ship = new Ship(3);
-
-    // expect(() => gameBoard.placeShip(ship, 8, 8)).toThrowError(/Cannot place the ship at the given coordinates. Out of bounds./);
-
     gameBoard.placeShip(new Ship(2), 2, 4);
-    // expect(() => gameBoard.placeShip(ship, 2, 3)).toThrowError(/Cannot place the ship at the given coordinates. Another ship is already there./);
+
   });
 
   it('should receive an attack and update the board', () => {
@@ -49,12 +43,7 @@ describe('GameBoard', () => {
 
     gameBoard.receiveAttack(4, 4);
     expect(gameBoard.attacks).toContainEqual({ row: 4, column: 4 });
-    
-    // const consoleSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
-    // gameBoard.reportAttacks();
-    // expect(consoleSpy).toHaveBeenCalledWith('Attacks:');
-    // expect(consoleSpy).toHaveBeenCalledWith('(4, 4)');
-    // consoleSpy.mockRestore();
+
   });
 
   it('should check if all ships are sunk', () => {
@@ -94,14 +83,6 @@ describe('GameBoard', () => {
 
     gameBoard.receiveAttack(2, 3);
     expect(ship.hits()).toEqual(1);
-
-
-    // const consoleSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
-    // gameBoard.receiveAttack(2, 3);
-    // expect(consoleSpy).toHaveBeenCalledWith(
-    //   'Coordinates (2, 3) have already been attacked. Please choose another pair.'
-    // );
-    // consoleSpy.mockRestore();
   });
 
   it('should place a ship on the board with vertical placement', () => {

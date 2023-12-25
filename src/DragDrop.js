@@ -116,10 +116,8 @@ function dragDrop() {
       const shipName = ship.classList[1];
       if (!shipsPlaced[shipName]) {
         e.dataTransfer.setData("text/plain", shipName);
-        // console.log(shipsPlaced)
       } else {
         e.preventDefault();
-        // console.log(ship.dataset.length);
       }
     });
   });
@@ -184,7 +182,6 @@ function dragDrop() {
     const shipLength = parseInt(
       document.querySelector(`.${shipName}`).dataset.length
     );
-    // console.log(shipLength);
     if (isColumnOrientation) {
       for (let i = 0; i < shipLength; i++) {
         boardArray[row + i][col] = "x";
@@ -196,11 +193,9 @@ function dragDrop() {
     }
     placeShip(shipLength, row, col);
 
-    // console.log("Updated Board Array:", boardArray);
   }
 }
-// console.log(boardArray);
-// console.log(shipsPlaced)
+
 
 function placeShip(length, row, col) {
   if(isColumnOrientation){

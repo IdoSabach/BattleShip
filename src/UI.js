@@ -200,17 +200,6 @@ export function createGrid() {
       gridComputer.appendChild(boxComputer);
     }
   }
-  //add hover
-  // const boxComputer = document.querySelectorAll('.boxOnGridToComputer')
-
-  // boxComputer.forEach(box=>{
-  //   box.addEventListener('mouseover',function(){
-  //     box.style.backgroundColor = "black"
-  //   })
-  //   box.addEventListener('mouseout', function() {
-  //     box.style.backgroundColor = "white"; // Reset to default background color
-  // });
-  // })
 }
 
 function boxComputerClick(boxComputer) {

@@ -1,6 +1,4 @@
-// const GameBoard = require('../classes/gameBoard');
-// const Player = require('../classes/player');
-// const Ship = require('../classes/ship');
+
 
 import Ship from '../classes/ship';
 import GameBoard from '../classes/gameBoard';
@@ -41,37 +39,6 @@ describe('Player', () => {
 
   it('should switch turns and attack each other', () => {
     
-    // player.makeAttack(computerGameBoard, 2, 3);
-    // computerPlayer.makeRandomAttack(playerGameBoard);
-    // player.makeAttack(computerGameBoard, 2, 4);
-    // computerPlayer.makeRandomAttack(playerGameBoard);
-    // player.makeAttack(computerGameBoard, 4, 5);
-    // computerPlayer.makeRandomAttack(playerGameBoard);
-    // player.makeAttack(computerGameBoard, 4, 6);
-    // computerPlayer.makeRandomAttack(playerGameBoard);
-    // player.makeAttack(computerGameBoard, 4, 7);
-    // computerPlayer.makeRandomAttack(playerGameBoard);
-    // player.makeAttack(computerGameBoard, 2, 5);
-    // computerPlayer.makeRandomAttack(playerGameBoard);
-    // player.makeAttack(computerGameBoard, 4, 8);
-    // computerPlayer.makeRandomAttack(playerGameBoard);
-    // player.makeAttack(computerGameBoard, 4, 9);
-    // computerPlayer.makeRandomAttack(playerGameBoard);
-    // player.makeAttack(computerGameBoard, 5, 2);
-    // computerPlayer.makeRandomAttack(playerGameBoard);
-    // player.makeAttack(computerGameBoard, 5, 3);
-    // computerPlayer.makeRandomAttack(playerGameBoard);
-    // player.makeAttack(computerGameBoard, 5, 4);
-    // computerPlayer.makeRandomAttack(playerGameBoard);
-    // player.makeAttack(computerGameBoard, 5, 5);
-    // computerPlayer.makeRandomAttack(playerGameBoard);
-    // player.makeAttack(computerGameBoard, 5, 6);
-    // computerPlayer.makeRandomAttack(playerGameBoard);
-    // player.makeAttack(computerGameBoard, 5, 1);
-    // computerPlayer.makeRandomAttack(playerGameBoard);
-    
-
-
     while(!playerGameBoard.areAllShipsSunk() || !computerGameBoard.areAllShipsSunk()){
       let crd = playerGameBoard.getRandomAttackCoordinates()
       computerPlayer.makeRandomAttack(playerGameBoard);

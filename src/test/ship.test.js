@@ -1,4 +1,4 @@
-// const Ship = require('../classes/ship'); 
+
 import Ship from '../classes/ship';
 
 describe('Ship', () => {

@@ -250,31 +250,31 @@ body {
 .one{
   width:60px;
   height: 30px;
-  /* grid-column: span 1; */
+  /* background: url(./image/battleshipXd56e5a89beb359219e25.svg); */
 }
 
 .two{
   width:90px;
   height: 30px;
-  /* grid-column: span 2; */
+  /* background: url(./image/carrierX008846a84b2a34dde315.svg); */
 }
 
 .three{
   width:90px;
   height: 30px;
-  /* grid-column: span 2; */
+  /* background: url(./image/cruiserX0504ee6feab7e47038d3.svg); */
 }
 
 .four{
   width:120px;
   height: 30px;
-  /* grid-column: span 2; */
+  /* background: url(./image/submarineX543bf6eb30d63dfd7a2f.svg); */
 }
 
 .five{
   width:150px;
   height: 30px;
-  /* grid-column: span 3; */
+  /* background: url(./image/destroyerX56e5c8a88ff718d93efc.svg); */
 }
 /* .expanded {
   height: auto !important;
