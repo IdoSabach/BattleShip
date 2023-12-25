@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  /* outline: 1px red solid; */
+  outline: 1px red solid;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   /* font-family: 'Silkscreen', sans-serif; */
 }
@@ -82,7 +82,7 @@ body {
   display: grid;
   grid-template-columns: repeat(10, 50px);
   grid-template-rows: repeat(10, 50px);
-  margin-left: 50px;
+  margin: 0px 50px 0px;
 }
 
 .gridPlayer {
@@ -91,7 +91,7 @@ body {
   display: grid;
   grid-template-columns: repeat(10, 50px);
   grid-template-rows: repeat(10, 50px);
-  margin-right: 50px;
+  margin: 0px 50px 0px;
 }
 
 
